@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     @vite(['resources/css/style.css', 'resources/js/script.js'])
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>Modern Login & Registration Page</title>
+    <title>Library Login & Registration</title>
 </head>
 
 <body>
@@ -16,16 +16,17 @@
         {{-- Registration Form --}}
         <div class="form-container sign-up">
             <form id="registerForm">
-                <h1>Create Account</h1>
-                <input type="text" name="name" id="registerName" placeholder="Name" required>
-                <input type="email" name="email" id="registerEmail" placeholder="Email" required>
+                <h1>Join the Library</h1>
+                <p class="text-center">Discover thousands of books and resources at your fingertips.</p>
+                <input type="text" name="name" id="registerName" placeholder="Your Name" required>
+                <input type="email" name="email" id="registerEmail" placeholder="Your Email" required>
                 <div class="password-container">
                     <i class="fa-solid fa-eye" id="registerEyeIcon"></i>
-                    <input type="password" name="password" id="registerPassword" placeholder="Password" required>
+                    <input type="password" name="password" id="registerPassword" placeholder="Create Password" required>
                 </div>
                 <div class="password-container">
                     <i class="fa-solid fa-eye" id="registerConfirmEyeIcon"></i>
-                    <input type="password" name="password_confirmation" id="registerPasswordConfirmation" placeholder="Password Confirmation" required>
+                    <input type="password" name="password_confirmation" id="registerPasswordConfirmation" placeholder="Confirm Password" required>
                 </div>
                 <button type="button" id="registerButton">
                     <span>Sign Up</span>
@@ -37,13 +38,14 @@
         {{-- Login Form --}}
         <div class="form-container sign-in">
             <form id="loginForm">
-                <h1>Sign In</h1>
-                <input type="email" name="email" id="loginEmail" placeholder="Email" required>
+                <h1>Library Login</h1>
+                <p class="text-center">Access your account to borrow books and explore the collection.</p>
+                <input type="email" name="email" id="loginEmail" placeholder="Your Email" required>
                 <div class="password-container">
                     <i class="fa-solid fa-eye" id="loginEyeIcon"></i>
-                    <input type="password" name="password" id="loginPassword" placeholder="Password" required>
+                    <input type="password" name="password" id="loginPassword" placeholder="Your Password" required>
                 </div>
-                <a href="#">Forget Your Password?</a>
+                <a href="#">Forgot Your Password?</a>
                 <button type="button" id="loginButton">
                     <span>Sign In</span>
                     <i class="fa-solid fa-arrow-right"></i>
@@ -56,12 +58,12 @@
             <div class="toggle">
                 <div class="toggle-panel toggle-left">
                     <h1>Welcome Back!</h1>
-                    <p>Enter your personal details to use all of site features</p>
+                    <p class="text-center">Log in to continue borrowing books and exploring new arrivals.</p>
                     <button class="hidden" id="login">Sign In</button>
                 </div>
                 <div class="toggle-panel toggle-right">
-                    <h1>Hello, Friend!</h1>
-                    <p>Register with your personal details to use all of site features</p>
+                    <h1>New to the Library?</h1>
+                    <p>Create an account to access books, e-resources, and events.</p>
                     <button class="hidden" id="register">Sign Up</button>
                 </div>
             </div>

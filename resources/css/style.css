@@ -6,9 +6,11 @@
     box-sizing: border-box;
     font-family: "Montserrat", sans-serif;
 }
-
+.text-center{
+    text-align: center;
+}
 body {
-    background-image: url('/storage/app/public/assets/pexels-rafael-cosquiere-1059286-2041540.jpg');;
+    background-image: url('/storage/app/public/assets/pexels-viktortalashuk-2328869.jpg');;
     background-size: cover;
     background-position: center;
     display: flex;

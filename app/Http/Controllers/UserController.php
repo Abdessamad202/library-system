@@ -39,7 +39,7 @@ class UserController extends Controller
     Session::flush();
 
     // Regenerate the CSRF token
-    $request->session()->regenerateToken();
+    // $request->session()->regenerateToken();
 
     // Redirect the user to the login page or home page
     return redirect()->route('login'); // Change 'login' to the appropriate route name
