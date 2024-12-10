@@ -14,3 +14,4 @@ Route::post('/login', [App\Http\Controllers\API\UserController::class,"login"])-
 Route::post('/logout', [App\Http\Controllers\UserController::class, 'logout'])->name('logout');
 Route::view("/layout", "front.home")->name("layout");
 Route::view("/books", "front.books-search")->name("books");
+Route::view("/book", "front.book")->name("book");
