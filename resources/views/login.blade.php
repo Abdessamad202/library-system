@@ -4,7 +4,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     @vite(['resources/css/style.css', 'resources/js/script.js'])
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Library Login & Registration</title>
@@ -19,11 +18,14 @@
                 <h1>Join the Library</h1>
                 <p class="text-center">Discover thousands of books and resources at your fingertips.</p>
                 <input type="text" name="name" id="registerName" placeholder="Your Name" required>
+                <div id="name" class="error"></div>
                 <input type="email" name="email" id="registerEmail" placeholder="Your Email" required>
+                <div id="email" class="error"></div>
                 <div class="password-container">
                     <i class="fa-solid fa-eye" id="registerEyeIcon"></i>
                     <input type="password" name="password" id="registerPassword" placeholder="Create Password" required>
                 </div>
+                <div id="password" class="error"></div>
                 <div class="password-container">
                     <i class="fa-solid fa-eye" id="registerConfirmEyeIcon"></i>
                     <input type="password" name="password_confirmation" id="registerPasswordConfirmation" placeholder="Confirm Password" required>
@@ -41,6 +43,7 @@
                 <h1>Library Login</h1>
                 <p class="text-center">Access your account to borrow books and explore the collection.</p>
                 <input type="email" name="email" id="loginEmail" placeholder="Your Email" required>
+                <div id="loginEmailError" class="error"></div>
                 <div class="password-container">
                     <i class="fa-solid fa-eye" id="loginEyeIcon"></i>
                     <input type="password" name="password" id="loginPassword" placeholder="Your Password" required>
@@ -69,8 +72,6 @@
             </div>
         </div>
     </div>
-
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     @vite(['resources/js/script.js'])
 </body>
 

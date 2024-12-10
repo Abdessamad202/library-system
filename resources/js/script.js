@@ -1,3 +1,6 @@
+// jquery
+import $ from 'jquery';
+
 const container = document.getElementById('container');
 const registerBtn = document.getElementById('register');
 const loginBtn = document.getElementById('login');
@@ -54,6 +57,7 @@ hiddenBtn.forEach((el) => {
     el.addEventListener("click",() => {
         document.querySelectorAll("input").forEach((el) => {
             el.value = ""
+            
         })
         document.querySelectorAll(".fa-eye").forEach(el=>el.classList.remove("show"))
     })
@@ -82,11 +86,9 @@ $(document).ready(function () {
             },
             error: function (xhr) {
                 const errors = xhr.responseJSON.errors;
-                let errorMessages = '';
-                for (const key in errors) {
-                    errorMessages += errors[key][0] + '\n';
-                }
-                alert(errorMessages); // Display validation errors
+                $('#name').html(errors.name[0]);
+                $('#email').html(errors.email[0]);
+                $('#password').html(errors.password[0]);
             },
         });
     });
@@ -110,11 +112,7 @@ $(document).ready(function () {
             },
             error: function (xhr) {
                 const errors = xhr.responseJSON.errors;
-                let errorMessages = '';
-                for (const key in errors) {
-                    errorMessages += errors[key][0] + '\n';
-                }
-                alert(errorMessages);
+                $('#loginEmailError').html(errors.email[0]);
             },
         });
     });
