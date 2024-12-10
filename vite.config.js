@@ -7,7 +7,9 @@ export default defineConfig({
             input: ['resources/css/app.css',
                     'resources/js/app.js',
                     'resources/js/components/navbar.js',
-                    'resources/css/navbar.css'],
+                    'resources/css/navbar.css',
+                    'resources/css/search.css'
+                ],
             refresh: true,
         }),
     ],
