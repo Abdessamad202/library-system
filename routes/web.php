@@ -15,3 +15,7 @@ Route::post('/logout', [App\Http\Controllers\UserController::class, 'logout'])->
 Route::view("/layout", "front.home")->name("layout");
 Route::view("/books", "front.books-search")->name("books");
 Route::view("/book", "front.book")->name("book");
+Route::view("/category", "front.category")->name("category");
+Route::view("/profile", "front.profile")->name("profile");
+Route::view("/settings", "front.settings")->name("settings");
+Route::view("/reservation", "front.reservation")->name("reservation");
