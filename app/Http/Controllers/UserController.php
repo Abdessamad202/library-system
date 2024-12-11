@@ -7,9 +7,13 @@ use Illuminate\Http\Request;
 use App\Http\Requests\LoginRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use App\Http\Requests\RegisterRequest;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Password;
 use App\Http\Requests\UpdateProfileRequest;
+use App\Http\Requests\PasswordUpdateRequest;
+use App\Mail\ConfirmationMail;
 
 class UserController extends Controller
 {
@@ -49,5 +53,43 @@ class UserController extends Controller
         Auth::user()->update($filables);
 
         return redirect()->route("profile");
+    }
+    public function updatePassword(PasswordUpdateRequest $request){
+        $filables = $request->validated();
+        if (Hash::check($filables["current_password"],Auth::user()->password)) {
+            // return dd("true");
+            $filables["password"] = Hash::make($filables["new_password"]);
+            Auth::user()->update($filables);
+            return redirect()->route("settings")->with("success","Password updated successfully");
+        }
+    }
+    public function mailConfirm(){
+        $user = Auth::user();
+        $token = base64_encode($user->id."///".$user->created_at);
+        Mail::to($user->email)->send(new ConfirmationMail($token));
+        // return dd($token);
+        return redirect()->route("settings")->with("success","Email confirmation sent successfully , check your email");
+    }
+    public function mailVerify($token){
+        $token = base64_decode($token);
+        $id = explode("///", $token)[0];
+        $created_at = explode("///", $token)[1];
+        $user = User::find($id);
+        if ($user->created_at == $created_at) {
+            $user->email_verified_at = now();
+            $user->save();
+            return redirect()->route("settings")->with("success","Email verified successfully");
+        }
+    }
+
+    public function changeEmail(Request $request){
+        $user = Auth::user();
+        if (Hash::check($request->password, $user->password)) {
+            $user->email = $request->email;
+            $user->save();
+            return redirect()->route("settings")->with("success","Email updated successfully");
+        }else{
+            return redirect()->route("settings")->with("error","Password is incorrect");
+        }
     }
 }

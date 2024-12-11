@@ -12,7 +12,11 @@
                     <h2 class="h2">Change Password</h2>
                 </div>
                 <div class="card-body">
-                    <form>
+                    @session('success')
+                    <x-notification message="{{ session('success') }}" />
+                    @endsession
+                    <form action="{{ route('password.update') }}" method="POST">
+                        @csrf
                         <!-- Current Password Input -->
                         <div class="form-floating mt-3">
                             <input class="form-control" type="password" name="current_password" id="current_password"
@@ -48,20 +52,19 @@
                     <h2 class="h2">Email Confirmation</h2>
                 </div>
                 <div class="card-body">
-                    <p>Please enter your email address to receive a confirmation mail.</p>
-                    <form>
-                        <!-- Email Input -->
-                        <div class="form-floating mt-3">
-                            <input class="form-control" type="email" name="email" id="email_confirmation"
-                                placeholder="Enter your email" required />
-                            <label for="email_confirmation">Email Address</label>
-                        </div>
-
-                        <!-- Submit Button -->
-                        <div class="mt-3 text-end">
-                            <button type="submit" class="btn btn-primary">Send Confirmation Link</button>
-                        </div>
+                    @if (auth()->user()->email_verified_at !== null)
+                        <p>Your email address is already verified.</p>
+                    @else
+                        <form action="{{ route('mail.confirm') }}" method="POST">
+                            <p>Please click the button below to confirm your email address</p>
+                            @csrf
+                            <!-- Email Input -->
+                            <!-- Submit Button -->
+                            <div class="mt-3 text-end">
+                                <button type="submit" class="btn btn-primary">Send Confirmation Link</button>
+                            </div>
                     </form>
+                    @endif
                 </div>
             </div>
 
@@ -71,10 +74,11 @@
                     <h2 class="h2">Change Email Address</h2>
                 </div>
                 <div class="card-body">
-                    <form>
+                    <form action="{{ route('email.change') }}" method="POST">
+                        @csrf
                         <!-- New Email Input -->
                         <div class="form-floating mt-3">
-                            <input class="form-control" type="email" name="new_email" id="new_email"
+                            <input class="form-control" type="email" name="email" id="new_email"
                                 placeholder="Enter your new email" required />
                             <label for="new_email">New Email Address</label>
                         </div>
@@ -85,7 +89,9 @@
                                 placeholder="Enter your password" required />
                             <label for="password_confirmation">Password</label>
                         </div>
-
+                        @session('error')
+                            <div class="text-danger">{{ session('error') }}</div>
+                        @endsession
                         <!-- Submit Button -->
                         <div class="mt-3 text-end">
                             <button type="submit" class="btn btn-primary">Change Email</button>

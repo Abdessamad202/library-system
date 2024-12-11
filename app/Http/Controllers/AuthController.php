@@ -11,7 +11,13 @@ class AuthController extends Controller
     {
         return view('front.home'); // Ensure 'front.home' exists
     }
-    public function profile(){
+    public function profileView(){
         return view('front.profile');
+    }
+    public function settingsView(){
+        return view('front.settings');
+    }
+    public function reservationView(){
+        return view('front.reservation');
     }
 }

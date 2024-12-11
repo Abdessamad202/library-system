@@ -21,7 +21,7 @@
           <li class="Nav-item profile-picture">
             <a href="{{ route('profile') }}">
               <div class="drop-element">
-                <img src="{{ Storage::url(auth()->user()->image)}}" width="30" class="profile-picture" alt="">
+                <img src="{{ Storage::url(auth()->user()->image)}}" width="30" class="profile-picture rounded-circle" alt="profile">
               </div>
             </a>
           </li>
@@ -62,7 +62,7 @@
         <li class="Nav-item profile-picture">
           <a href="./profile.html">
             <div class="drop-element">
-              <img src="{{ Storage::url(auth()->user()->image)}}" width="30" class="profile-picture" alt="">
+              <img src="{{ Storage::url(auth()->user()->image)}}" width="30" class="profile-picture" alt="profile">
             </div>
           </a>
         </li>
