@@ -19,9 +19,9 @@
             </div>
           </li>
           <li class="Nav-item profile-picture">
-            <a href="./profile.html">
+            <a href="{{ route('profile') }}">
               <div class="drop-element">
-                <img src="{{ asset('assets/user-profile-icon.webp')}}" width="30" class="profile-picture" alt="">
+                <img src="{{ Storage::url(auth()->user()->image)}}" width="30" class="profile-picture" alt="">
               </div>
             </a>
           </li>
@@ -62,7 +62,7 @@
         <li class="Nav-item profile-picture">
           <a href="./profile.html">
             <div class="drop-element">
-              <img src="{{ asset('assets/user-profile-icon.webp')}}" width="30" class="profile-picture" alt="">
+              <img src="{{ Storage::url(auth()->user()->image)}}" width="30" class="profile-picture" alt="">
             </div>
           </a>
         </li>
