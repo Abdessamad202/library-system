@@ -65,7 +65,7 @@ a {
   color: black;
   font-size: 16px;
 }
-ul li a {
+ul li a,ul li button {
   transition: 0.3s;
   margin-bottom: 5px;
 }
@@ -73,7 +73,7 @@ ul li:hover,
 ul li a.active {
   background-color: #f6f6f6;
 }
-.sidebar ul li a span {
+.sidebar ul li a span,.sidebar ul li button span {
   font-size: 14px;
   margin-left: 10px;
 }
@@ -93,12 +93,12 @@ ul li a.active {
   border-radius: 6px;
   cursor: pointer;
 }
-.slider ul  li a{
+.slider ul  li a , .sidebar ul li button{
   margin: 0;
   display: flex;
   align-items: center;
 }
-.slider ul  li a i {
+.slider ul  li a i , .sidebar ul li button a {
   margin-right: 10px;
 
 }
@@ -107,7 +107,7 @@ ul li a.active {
   /* transform: translateX(2px); */
 }
 
-.slider ul  li a i,.slider ul  li a i::before{
+.slider ul  li a i,.slider ul  li a i::before ,.slider ul  li button i {
   width: 25px;
   height: 25px;
   display: flex;
@@ -147,4 +147,7 @@ ul li a.active {
   min-width: 991px;
 }
 
+}
+form {
+  width: 100%;
 }

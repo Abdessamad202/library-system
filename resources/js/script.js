@@ -57,7 +57,7 @@ hiddenBtn.forEach((el) => {
     el.addEventListener("click",() => {
         document.querySelectorAll("input").forEach((el) => {
             el.value = ""
-            
+
         })
         document.querySelectorAll(".fa-eye").forEach(el=>el.classList.remove("show"))
     })
@@ -81,7 +81,7 @@ $(document).ready(function () {
             data: data,
             headers: { 'X-CSRF-TOKEN': csrfToken },
             success: function (response) {
-                alert('Registration successful!');
+                // alert('Registration successful!');
                 window.location.href = '/home'; // Redirect to home on success
             },
             error: function (xhr) {
