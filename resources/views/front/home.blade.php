@@ -7,7 +7,7 @@
 @endsection
 @section('content')
     <x-navbar/>
-    <x-hero-section/>
+    <x-heroSection/>
     <x-books title="New Books"/>
     <x-location />
     <x-footer/>
