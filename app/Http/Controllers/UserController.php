@@ -9,14 +9,17 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\RegisterRequest;
 use Illuminate\Support\Facades\Session;
+use App\Http\Requests\UpdateProfileRequest;
 
 class UserController extends Controller
 {
     //
-    public function loginView() {
+    public function loginView()
+    {
         return view("login");
     }
-    public function register(RegisterRequest $request) {
+    public function register(RegisterRequest $request)
+    {
         $filables = $request->validated();
         $filables["password"] = Hash::make($filables["password"]);
         $user = User::create($filables);
@@ -24,24 +27,27 @@ class UserController extends Controller
         Auth::login($user);
         return redirect()->route("home");
     }
-    public function login(LoginRequest $request) {
-        if(Auth::attempt($request->validated())){
-            $request->session()->regenerate();
-            return redirect()->route("home");
-        }
-    }
+
     public function logout(Request $request)
-{
-    // Log the user out
-    Auth::logout();
+    {
+        // Log the user out
+        Auth::logout();
 
-    // Invalidate the session to prevent session fixation attacks
-    Session::flush();
+        // Invalidate the session to prevent session fixation attacks
+        Session::flush();
 
-    // Regenerate the CSRF token
-    // $request->session()->regenerateToken();
+        // Regenerate the CSRF token
+        // $request->session()->regenerateToken();
 
-    // Redirect the user to the login page or home page
-    return redirect()->route('login'); // Change 'login' to the appropriate route name
-}
+        // Redirect the user to the login page or home page
+        return redirect()->route('login'); // Change 'login' to the appropriate route name
+    }
+    public function updateProfile(UpdateProfileRequest $request){
+        $filables = $request->validated();
+
+        $filables["image"] = $request->file("image")->store("","public");
+        Auth::user()->update($filables);
+
+        return redirect()->route("profile");
+    }
 }
