@@ -21,10 +21,14 @@
                 </a>
             </li>
             <li>
-                <a class="d-flex align-center fs-14 c-black rad-6 px-lg-5" href="plans.html">
-                    <i class="fa-solid fa-arrow-right-from-bracket"></i>
-                    <span>Logout</span>
-                </a>
+                <form action="{{ route('logout') }}" method="post">
+                    @csrf
+
+                    <button type="submit" class="d-flex w-100 align-center gap-2 fs-14 c-black rad-6 px-lg-5" >
+                        <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                        <span>Logout</span>
+                    </button>
+                </form>
             </li>
         </ul>
     </div>
