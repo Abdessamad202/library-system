@@ -25,8 +25,12 @@ Route::post('/logout', [App\Http\Controllers\UserController::class, 'logout'])->
 
 Route::view("/layout", "front.home")->name("layout");
 Route::view("/books", "front.books-search")->name("books");
-Route::view("/book", "front.book")->name("book");
-Route::view("/category", "front.category")->name("category");
+Route::get("/books-search", [AuthController::class, "booksSearchView"])->name("books.search");
+
+// Route::get("/books/{id}", "front.books-search")->name("books");
+Route::get("/book/{book}", [AuthController::class, "bookView"])->name("book");
+// Route::view("/category", "front.category")->name("category");
+Route::get("/category/{category}", [AuthController::class, "categoryView"])->name("category");
 Route::view("/profile", "front.profile")->name("profile");
 Route::view("/settings", "front.settings")->name("settings");
 Route::view("/reservation", "front.reservation")->name("reservation");
