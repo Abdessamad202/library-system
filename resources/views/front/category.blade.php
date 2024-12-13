@@ -8,11 +8,11 @@
     <section class="hero" style="background: url('{{ asset("./assets/banner.jpg") }}') no-repeat center center/cover;">
         <div class="hero-overlay"></div>
         <div class="hero-content">
-          <h1>Explore Collection</h1>
-          <p>Discover a wide range of books across different categories and genres.</p>
-          <button onclick="location.href='#categories'">Browse Categories</button>
+          <h1>{{ $category->name }}</h1>
+          <p>{{ $category->description }}</p>
+          <button onclick="location.href='#newBooksSlider'">Browse Categories</button>
         </div>
       </section>
-    <x-books title="New Books"/>
+    <x-books title="Categories Books"/>
     <x-footer/>
 @endsection

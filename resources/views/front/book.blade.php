@@ -5,7 +5,7 @@
 @endsection
 @section('content')
     <x-navbar/>
-    <x-book/>
+    <x-book :book="$book"/>
     <x-books title="Related Books"/>
     <x-footer/>
 @endsection
