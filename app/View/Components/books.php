@@ -3,8 +3,9 @@
 namespace App\View\Components;
 
 use Closure;
-use Illuminate\Contracts\View\View;
+use App\Models\Book;
 use Illuminate\View\Component;
+use Illuminate\Contracts\View\View;
 
 class books extends Component
 {
@@ -21,6 +22,7 @@ class books extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.books');
+        $books = Book::all();
+        return view('components.books', compact('books'));
     }
 }

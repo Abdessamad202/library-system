@@ -3,8 +3,9 @@
 namespace App\View\Components;
 
 use Closure;
-use Illuminate\Contracts\View\View;
+use App\Models\Book;
 use Illuminate\View\Component;
+use Illuminate\Contracts\View\View;
 
 class heroSection extends Component
 {
@@ -21,6 +22,7 @@ class heroSection extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.heroSection');
+        $books = Book::take(5)->get();
+        return view('components.heroSection' , compact('books'));
     }
 }

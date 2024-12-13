@@ -3,8 +3,9 @@
 namespace App\View\Components;
 
 use Closure;
-use Illuminate\Contracts\View\View;
+use App\Models\Category;
 use Illuminate\View\Component;
+use Illuminate\Contracts\View\View;
 
 class navbar extends Component
 {
@@ -21,6 +22,7 @@ class navbar extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.navbar');
+        $categories = Category::pluck('name','id');
+        return view('components.navbar',compact('categories'));
     }
 }
