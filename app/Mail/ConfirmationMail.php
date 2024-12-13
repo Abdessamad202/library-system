@@ -17,10 +17,12 @@ class ConfirmationMail extends Mailable
      * Create a new message instance.
      */
     public $href;
+    private $user;
 
-    public function __construct($href)
+    public function __construct($href, $user)
     {
         $this->href = $href;
+        $this->user = $user;
     }
     /**
      * Get the message envelope.
@@ -41,7 +43,8 @@ class ConfirmationMail extends Mailable
             view: 'mails.mail',
             with: [
                 'title' => 'Confirmation Mail',
-                "href" => $this->href
+                "href" => $this->href,
+                "user" => $this->user
             ]
         );
     }
