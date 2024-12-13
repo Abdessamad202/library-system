@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Jobs\sendMail;
 use Illuminate\Http\Request;
+use App\Mail\ConfirmationMail;
 use App\Http\Requests\LoginRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -13,7 +15,6 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Password;
 use App\Http\Requests\UpdateProfileRequest;
 use App\Http\Requests\PasswordUpdateRequest;
-use App\Mail\ConfirmationMail;
 
 class UserController extends Controller
 {
@@ -66,7 +67,7 @@ class UserController extends Controller
     public function mailConfirm(){
         $user = Auth::user();
         $token = base64_encode($user->id."///".$user->created_at);
-        Mail::to($user->email)->send(new ConfirmationMail($token));
+        sendMail::dispatch($token, $user);
         // return dd($token);
         return redirect()->route("settings")->with("success","Email confirmation sent successfully , check your email");
     }

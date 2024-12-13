@@ -1,15 +1,19 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Http\Controllers\Controller;
+use App\Models\Book;
 
+use App\Models\Category;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class AuthController extends Controller
 {
     public function home()
     {
-        return view('front.home'); // Ensure 'front.home' exists
+        $categories = Category::all();
+        // return dd($categories);
+        return view('front.home', compact('categories')); // Ensure 'front.home' exists
     }
     public function profileView(){
         return view('front.profile');
@@ -19,5 +23,17 @@ class AuthController extends Controller
     }
     public function reservationView(){
         return view('front.reservation');
+    }
+    public function bookView(Book $book){
+        // return dd($book);
+        return view('front.book', compact('book'));
+    }
+    public function categoryView(Category $category){
+        // return dd($category);
+        return view('front.category', compact('category'));
+    }
+    public function booksSearchView(){
+        $books = Book::all();
+        return view('front.books-search' , compact('books'));
     }
 }

@@ -99,7 +99,7 @@
                             <table class="inner-body" width="100%" cellpadding="0" cellspacing="0" role="presentation">
                                 <tr>
                                     <td class="content-cell">
-                                        <h3>Hello! {{ auth()->user()->name  }}</h3>
+                                        <h3>Hello! {{ $user->name  }}</h3>
                                         <p>You are receiving this email because we received a email confirmation request for your account.</p>
                                         <a href="{{route('mail.verify', $href)}}" class="button" target="_blank" rel="noopener noreferrer" aria-label="Click to reset your password">
                                             Confirm Your Email
