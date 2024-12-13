@@ -1,20 +1,27 @@
 @vite(['resources/js/components/navbar.js', 'resources/css/components/navbar.css'])
+@props(['categories'])
 <div class="Nav-bar-a">
     <div class="Nav-wrap">
       <div class="logo"><span class="letter">A</span>IBRARY</div>
       <!-- Large Screen Nav -->
       <Nav class="large-screen">
         <ul class="Nav-menu">
-          <li class="Nav-item"><a href="#home" class="Nav-link">Home</a></li>
+          <li class="Nav-item"><a href="{{ route('home') }}" class="Nav-link">Home</a></li>
+          @if (request()->routeIs('category'))
+          <li class="Nav-item"><a href="#newBooksSlider" class="Nav-link">RealtedBooks</a></li>
+          @elseif(request()->routeIs('home'))
           <li class="Nav-item"><a href="#newBooksSlider" class="Nav-link">NewBooks</a></li>
           <li class="Nav-item"><a href="#contact" class="Nav-link">Contact</a></li>
+          @endif
           <li class="Nav-item">
             <div class="drop-down">
               <div class="title">Categories</div>
               <i class="fa-solid fa-caret-down"></i>
               <ul class="down-links">
-                <li class="sub-Nav-item"><a href="#" class="Nav-link  sub">About Us</a></li>
-                <li class="sub-Nav-item"><a href="#" class="Nav-link sub">Our Team</a></li>
+                {{-- pluck ['name', 'id'] --}}
+                @foreach ($categories as $id => $name)
+                <li class="sub-Nav-item"><a href="{{ route('category', $id) }}" class="Nav-link sub">{{$name}}</a></li>
+                @endforeach
               </ul>
             </div>
           </li>

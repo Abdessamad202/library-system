@@ -13,14 +13,21 @@
                     curated collection of books tailored to spark your curiosity and
                     fuel your passion for reading.
                 </p>
-                <button class="explore mt-4"><a href="#explore" class=" fw-medium">
+                <a href="{{ route('books.search') }}" class=" fw-medium">
+                <button class="explore mt-4">
                         <span>Explore</span>
-                    </a></button>
+                    </button>
+                </a>
             </div>
             <div class="col-lg-6 text-center text-lg-start mb-4 mb-lg-0">
                 <div class="swiper-container hero-swiper">
                     <div class="swiper-wrapper">
-                        <div class="swiper-slide">
+                        @foreach ($books as $book)
+                            <div class="swiper-slide">
+                                <img src="{{asset($book->image)}}" alt="Book 1" class="w-50" />
+                            </div>
+                        @endforeach
+                        {{-- <div class="swiper-slide">
                             <img src="{{ asset('assets/psych-money-cover.jpg')}}" alt="Book 1" class="w-50" />
                         </div>
                         <div class="swiper-slide">
@@ -31,7 +38,7 @@
                         </div>
                         <div class="swiper-slide">
                             <img src="{{ asset('assets/psych-money-cover.jpg')}}" alt="Book 4" class="w-50" />
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
             </div>
