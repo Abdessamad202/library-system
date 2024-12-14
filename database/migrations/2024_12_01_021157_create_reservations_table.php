@@ -14,9 +14,9 @@ return new class extends Migration {
     {
         Schema::create('reservations', function (Blueprint $table) {
             $table->id();
-            $table->date('dateEmprunt');
-            $table->time('heurEmprunt');
-            $table->string('EtatReservation');
+            $table->date('date_emprunt');
+            $table->time('hour_emprunt');
+            $table->string('state')->default('pending');
             $table->foreignId('user_id')->constrained('users');
             $table->timestamps();
         });
