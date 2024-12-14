@@ -8,10 +8,8 @@ class Reservation extends Model
 {
     // Define fillable attributes for mass assignment
     protected $fillable = [
-        "dateEmprunt",
-        "heureEmprunt",
-        "dateReservation",
-        "etat",
+        "date_emprunt",
+        "hour_emprunt",
         "user_id",
     ];
 
