@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Reservation;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\ReserveRequest;
+use App\Models\ReservationBooks;
 
 class ReservationController extends Controller
 {
@@ -13,6 +16,7 @@ class ReservationController extends Controller
     public function index()
     {
         //
+
     }
 
     /**
@@ -21,14 +25,18 @@ class ReservationController extends Controller
     public function create()
     {
         //
+
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(ReserveRequest $request)
     {
+        Reservation::create(["date_emprunt" => $request->date_emprunt,"hour_emprunt" => $request->hour_emprunt,"user_id" => Auth::user()->id]);
         //
+        ReservationBooks::create(["book_id" => $request->book_id,"reservation_id" => Reservation::latest()->first()->id]);
+        return response()->json(["success" => true,"message" => "Reservation created successfully"]);
     }
 
     /**
