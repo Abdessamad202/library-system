@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ReservationController;
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -34,3 +36,5 @@ Route::get("/category/{category}", [AuthController::class, "categoryView"])->nam
 Route::view("/profile", "front.profile")->name("profile");
 Route::view("/settings", "front.settings")->name("settings");
 Route::view("/reservation", "front.reservation")->name("reservation");
+
+Route::post("/reserve", [ReservationController::class, "store"] )->name("reserve");
