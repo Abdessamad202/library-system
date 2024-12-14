@@ -36,4 +36,7 @@ class AuthController extends Controller
         $books = Book::all();
         return view('front.books-search' , compact('books'));
     }
+    // public function reservation(){
+    //     return view('front.reservation');
+    // }
 }
