@@ -38,3 +38,5 @@ Route::view("/settings", "front.settings")->name("settings");
 Route::view("/reservation", "front.reservation")->name("reservation");
 
 Route::post("/reserve", [ReservationController::class, "store"] )->name("reserve");
+
+Route::get('/test', [AuthController::class, "test"])->name("test");
