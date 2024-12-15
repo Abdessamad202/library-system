@@ -6,6 +6,7 @@ use App\Models\Book;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
@@ -35,6 +36,10 @@ class AuthController extends Controller
     public function booksSearchView(){
         $books = Book::all();
         return view('front.books-search' , compact('books'));
+    }
+    public function test(){
+        $reservations = Auth::user()->reservations();
+        return dd($reservations);
     }
     // public function reservation(){
     //     return view('front.reservation');
