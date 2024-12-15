@@ -16,19 +16,25 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>The Psychology of Money</td>
-                        <td>Morgan Housel</td>
-                        <td class="text-center">
-                            <img src="psych-money-cover.jpg" alt="The Psychology of Money" class=""
-                                style="max-width: 50px;" />
-                        </td>
-                        <td>10 Dec 2024</td>
-                        <td>10 Dec 2024</td>
-                        <td>
-                            <button class="btn btn-danger btn-sm"><i class="fa-solid fa-trash"></i></button>
-                        </td>
-                    </tr>
+                    {{-- @foreach ($reservations as $reservation) --}}
+
+                        <tr>
+                            <td>The Psychology of Money</td>
+                            <td>Morgan Housel</td>
+                            <td class="text-center">
+                                <img src="psych-money-cover.jpg" alt="The Psychology of Money" class=""
+                                    style="max-width: 50px;" />
+                            </td>
+                            <td>10 Dec 2024</td>
+                            <td>10 Dec 2024</td>
+                            <td>
+                                <button class="btn btn-danger btn-sm"><i class="fa-solid fa-trash"></i></button>
+                            </td>
+                        </tr>
+                    {{-- @endforeach --}}
+                    @php
+                        var_dump($reservations);
+                    @endphp
                     <tr>
                         <td>Atomic Habits</td>
                         <td>James Clear</td>
@@ -61,6 +67,3 @@
         </div>
     </div>
 </div>
-@foreach ( $books as $book)
-    {{$book->description}}
-@endforeach

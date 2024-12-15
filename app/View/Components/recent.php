@@ -2,6 +2,7 @@
 
 namespace App\View\Components;
 
+use App\Models\ReservationBooks;
 use Closure;
 use Illuminate\View\Component;
 use Illuminate\Contracts\View\View;
@@ -22,7 +23,8 @@ class recent extends Component
      */
     public function render(): View|Closure|string
     {
-        $books = Auth::user()->books;
-        return view('components.recent',compact('books'));
+
+        $reservations = Auth::user()->reservations()->orderBy('created_at', 'desc')->limit(5)->get();
+        return view('components.recent',compact('reservations'));
     }
 }
