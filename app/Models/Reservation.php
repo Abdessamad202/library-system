@@ -14,9 +14,12 @@ class Reservation extends Model
     ];
 
     // Define the relationship with the User model
-    public function reservations()
-{
-    return $this->belongsToMany(Reservation::class, 'reservation_book', 'book_id', 'reservation_id');
-}
-
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+    public function book()
+    {
+        return $this->belongsTo(Book::class);
+    }
 }
