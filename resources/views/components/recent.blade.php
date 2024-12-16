@@ -4,6 +4,9 @@
     </div>
     <div class="card-body">
         <div class="table-responsive">
+            @if ($reservations->isEmpty())
+                <p class="text-center mt-2">No reservations found.</p>
+            @else
             <table class="table table-bordered table-hover text-center align-middle">
                 <thead class="table-light">
                     <tr>
@@ -11,59 +14,34 @@
                         <th>Author</th>
                         <th>Cover</th>
                         <th>Reservation Date</th>
-                        <th>Time Up</th>
+                        <th>state</th>
                         <th>Options</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {{-- @foreach ($reservations as $reservation) --}}
-
+                    {{-- @dd($reservations) --}}
+                    @foreach ($reservations as $reservation)
                         <tr>
-                            <td>The Psychology of Money</td>
-                            <td>Morgan Housel</td>
-                            <td class="text-center">
-                                <img src="psych-money-cover.jpg" alt="The Psychology of Money" class=""
-                                    style="max-width: 50px;" />
+                            <td>{{ $reservation->book->title }}</td>
+                            <td>{{ $reservation->book->author }}</td>
+                            <td class="d-flex justify-content-center">
+                                <img src="{{ asset($reservation->book->image) }}" alt="The Psychology of Money"
+                                    class="" style="width: 50px;" />
                             </td>
-                            <td>10 Dec 2024</td>
-                            <td>10 Dec 2024</td>
+                            <td>{{ $reservation->date_emprunt }} {{ $reservation->hour_emprunt }}</td>
+                            <td>{{ $reservation->state }}</td>
                             <td>
-                                <button class="btn btn-danger btn-sm"><i class="fa-solid fa-trash"></i></button>
+                                <form action="{{ route('cancel', $reservation->id) }}" method="post">
+                                    @csrf
+                                    <button class="btn btn-danger btn-sm" type="submit"><i class="fa-solid fa-trash"></i></button>
+                                </form>
                             </td>
                         </tr>
-                    {{-- @endforeach --}}
-                    @php
-                        var_dump($reservations);
-                    @endphp
-                    <tr>
-                        <td>Atomic Habits</td>
-                        <td>James Clear</td>
-                        <td>
-                            <img src="psych-money-cover.jpg" alt="The Psychology of Money" class=""
-                                style="max-width: 50px;" />
-                        </td>
-                        <td>15 Dec 2024</td>
-                        <td>15 Dec 2024</td>
-                        <td>
-                            <button class="btn btn-danger btn-sm"><i class="fa-solid fa-trash"></i></button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Deep Work</td>
-                        <td>Cal Newport</td>
-                        <td>
-                            <img src="psych-money-cover.jpg" alt="The Psychology of Money" class=""
-                                style="max-width: 50px;" />
-                        </td>
-                        <td>20 Dec 2024</td>
-                        <td>20 Dec 2024</td>
-                        <td>
-                            <!-- remove icon in button -->
-                            <button class="btn btn-danger btn-sm"><i class="fa-solid fa-trash"></i></button>
-                        </td>
-                    </tr>
+                    @endforeach
                 </tbody>
             </table>
+            @endif
+
         </div>
     </div>
 </div>
