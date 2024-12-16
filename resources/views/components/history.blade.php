@@ -4,6 +4,9 @@
     </div>
     <div class="card-body">
         <div class="table-responsive">
+            @if ($reservations->isEmpty())
+                <p class="text-center mt-2">No reservations found.</p>
+            @else
             <table class="table table-bordered table-hover text-center align-middle">
                 <thead class="table-light">
                     <tr>
@@ -14,35 +17,20 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>The Psychology of Money</td>
-                        <td>Morgan Housel</td>
-                        <td class="text-center">
-                            <img src="psych-money-cover.jpg" alt="The Psychology of Money" class=""
-                                style="max-width: 50px;" />
-                        </td>
-                        <td>10 Dec 2024</td>
-                    </tr>
-                    <tr>
-                        <td>Atomic Habits</td>
-                        <td>James Clear</td>
-                        <td>
-                            <img src="psych-money-cover.jpg" alt="The Psychology of Money" class=""
-                                style="max-width: 50px;" />
-                        </td>
-                        <td>15 Dec 2024</td>
-                    </tr>
-                    <tr>
-                        <td>Deep Work</td>
-                        <td>Cal Newport</td>
-                        <td>
-                            <img src="psych-money-cover.jpg" alt="The Psychology of Money" class=""
-                                style="max-width: 50px;" />
-                        </td>
-                        <td>20 Dec 2024</td>
-                    </tr>
+                    @foreach ($reservations as $reservation)
+                        <tr>
+                            <td>{{$reservation->book->title}}</td>
+                            <td>{{$reservation->book->author}}</td>
+                            <td class="d-flex justify-content-center">
+                                <img src="{{asset($reservation->book->image)}}" alt="The Psychology of Money" class=""
+                                    style="width: 50px;" />
+                            </td>
+                            <td>{{$reservation->date_emprunt}} {{$reservation->hour_emprunt}}</td>
+                        </tr>
+                    @endforeach
                 </tbody>
             </table>
+            @endif
         </div>
     </div>
 </div>
