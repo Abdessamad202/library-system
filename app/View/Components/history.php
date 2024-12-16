@@ -3,8 +3,11 @@
 namespace App\View\Components;
 
 use Closure;
-use Illuminate\Contracts\View\View;
+use App\Models\Book;
 use Illuminate\View\Component;
+use App\Models\ReservationBooks;
+use Illuminate\Contracts\View\View;
+use Illuminate\Support\Facades\Auth;
 
 class history extends Component
 {
@@ -21,6 +24,12 @@ class history extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.history');
+        $reservations = Auth::user()->reservations;
+        foreach ($reservations as $reservation) {
+            $ReservationBooks = ReservationBooks::where('reservation_id', $reservation->id)->get();
+            $book = Book::find($ReservationBooks[0]->book_id);
+            $reservation->book = $book;
+        }
+        return view('components.history',compact('reservations'));
     }
 }
