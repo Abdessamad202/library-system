@@ -22,7 +22,6 @@ class books extends Component
      */
     public function render(): View|Closure|string
     {
-        $books = Book::all();
-        return view('components.books', compact('books'));
+        return view('components.books');
     }
 }
