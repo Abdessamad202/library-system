@@ -38,7 +38,12 @@ class ReservationController extends Controller
         ReservationBooks::create(["book_id" => $request->book_id,"reservation_id" => Reservation::latest()->first()->id]);
         return response()->json(["success" => true,"message" => "Reservation created successfully"]);
     }
-
+    public function cancel(Reservation $reservation)
+    {
+        $reservation->state = "cancelled";
+        $reservation->save();
+        return redirect()->route("reservation")->with("success","Reservation cancelled successfully");
+    }
     /**
      * Display the specified resource.
      */
