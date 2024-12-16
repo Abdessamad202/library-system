@@ -1,4 +1,4 @@
-@props(['title'])
+@props(['title','books'])
 @vite(['resources/js/components/swiper.js', 'resources/css/components/books.css', 'resources/css/app.css'])
 <div id="newBooksSlider"></div>
 <section class="py-5 mt-3 bg-light ">
