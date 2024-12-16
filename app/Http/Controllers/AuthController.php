@@ -32,7 +32,7 @@ class AuthController extends Controller
         $reservations= Auth::user()->reservations->where('state', 'pending');
         foreach ($reservations as $reservation) {
             $ReservationBooks = ReservationBooks::where('reservation_id', $reservation->id)->get();
-            $book_id = Book::find($ReservationBooks[0]->book_id)-;
+            $book_id = Book::find($ReservationBooks[0]->book_id)->id;
             if($book_id == $book->id){
                 $book->search = true ;
             }
