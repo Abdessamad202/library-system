@@ -13,6 +13,9 @@
                 <x-history />
             </div>
         </div>
+        @session('success')
+        <x-notification message="{{ session('success') }}" />
+        @endsession
     </x-sidebar>
     <x-footer />
 @endsection
