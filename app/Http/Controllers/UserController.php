@@ -53,7 +53,7 @@ class UserController extends Controller
         $filables["image"] = $request->file("image")->store("","public");
         Auth::user()->update($filables);
 
-        return redirect()->route("profile");
+        return redirect()->route("profile")->with("success", "the profile updated successfuly");
     }
     public function updatePassword(PasswordUpdateRequest $request){
         $filables = $request->validated();
