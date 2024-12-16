@@ -38,5 +38,6 @@ Route::view("/settings", "front.settings")->name("settings");
 Route::view("/reservation", "front.reservation")->name("reservation");
 
 Route::post("/reserve", [ReservationController::class, "store"] )->name("reserve");
+Route::post("/cancel/{reservation}", [ReservationController::class, "cancel"] )->name("cancel");
 
 Route::get('/test', [AuthController::class, "test"])->name("test");
