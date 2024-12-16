@@ -14,8 +14,9 @@ class AuthController extends Controller
     public function home()
     {
         $categories = Category::all();
+        $books = Book::all()->take(5);
         // return dd($categories);
-        return view('front.home', compact('categories')); // Ensure 'front.home' exists
+        return view('front.home', compact('categories','books')); // Ensure 'front.home' exists
     }
     public function profileView(){
         return view('front.profile');
@@ -41,7 +42,8 @@ class AuthController extends Controller
     }
     public function categoryView(Category $category){
         // return dd($category);
-        return view('front.category', compact('category'));
+        $booksRelated = $category->books->take(5);
+        return view('front.category', compact('category','booksRelated'));
     }
     public function booksSearchView(){
         $books = Book::all();
