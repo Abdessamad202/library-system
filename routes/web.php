@@ -41,3 +41,4 @@ Route::post("/reserve", [ReservationController::class, "store"] )->name("reserve
 Route::post("/cancel/{reservation}", [ReservationController::class, "cancel"] )->name("cancel");
 
 Route::get('/test', [AuthController::class, "test"])->name("test");
+Route::view('/dashboard','admin.dashboard');
