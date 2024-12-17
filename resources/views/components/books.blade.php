@@ -9,9 +9,9 @@
                 <!-- Book Item 1 -->
                 @foreach ($books as $book)
                     <div class="swiper-slide">
-                        <a href="{{ route('book', $book->id) }}">
-                            <img src="{{ asset($book->image) }}" alt="Book {{$book->id}}">
-                            <h5>{{ $book->title }}</h5>
+                        <a href="{{ route('book', $book['id']) }}">
+                            <img src="{{ asset($book['image']) }}" alt="Book {{$book['id']}}">
+                            <h5>{{ $book['title'] }}</h5>
                         </a>
                     </div>
                 @endforeach
