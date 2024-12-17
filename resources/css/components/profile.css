@@ -82,6 +82,7 @@ ul li a.active {
   padding: 0;
   box-sizing: border-box;
 }
+
 .slider ul  li {
   display: flex;
   width: 100%;
