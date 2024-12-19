@@ -12,7 +12,6 @@
 </head>
 <body>
   <div class="page d-flex p-relative ">
-    <h1 class="p-relative">@yield('title') </h1>
     @yield('content')
   </div>
 </body>
