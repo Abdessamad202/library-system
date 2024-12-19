@@ -1,5 +1,9 @@
 @props(['message'])
 <style>
+    body {
+        position: relative;
+        z-index: -1;
+    }
     .notification {
         position: fixed;
         bottom: 50px;
@@ -11,6 +15,7 @@
         padding: 20px 30px;
         font-weight: bold;
         border-radius: 5px;
+        background-color: #1e293b;
         /* width: 200px; */
         /* height: 20px; */
     }
@@ -19,7 +24,7 @@
         right: 50px;
     }
 </style>
-<div class="notification  bg-slate-800 ">{{ $message }}</div>
+<div class="notification active  ">{{ $message }}</div>
 
 <script>
     const notification = document.querySelector('.notification');
