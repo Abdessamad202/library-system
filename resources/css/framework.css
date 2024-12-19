@@ -9,8 +9,23 @@
   --grey-color: #888;
 }
 /* Start Box */
+.d-none{
+  display: none;
+}
 .d-flex {
   display: flex;
+}
+.align-items-center{
+  align-items: center;
+}
+.justify-content-center{
+  justify-content: center;
+}
+.justify-content-between {
+  justify-content: space-between;
+}
+.w-100px{
+  width: 100px;
 }
 .f-wrap {
   flex-wrap: wrap;
@@ -24,11 +39,26 @@
 .d-grid {
   display: grid;
 }
+.gap-10 {
+  gap: 10px;
+}
 .gap-20 {
   gap: 20px;
 }
 .d-block {
   display: block;
+}
+.cursor-pointer{
+  cursor :pointer;
+}
+.btn-red {
+  border-color: var(--red-color);
+}
+.btn-green {
+  border-color: var(--green-color);
+}
+.text-center{
+  text-align: center;
 }
 @media (max-width: 767px) {
   .block-mobile {
