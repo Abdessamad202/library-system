@@ -1,35 +1,53 @@
-<div class="container-lg  h-100 position-relative rounded bg-light ">
-    <div
-        class="slider border-right h-100 d-flex justify-content-lg-center align-items-center bg-white position-fixed z-1 w-lg-250   start-0 top-0">
-        <ul class="">
-            <li class="{{ request()->routeIs('profile') ? 'active' : ''}}">
-                <a class="d-flex align-center justify-center fs-14 c-black rad-6 px-lg-5" href="{{route('profile')}}">
-                    <i class="fa-regular fa-user"></i>
-                    <span>Profile</span>
-                </a>
-            </li>
-            <li class="{{ request()->routeIs('settings') ? 'active' : ''}}">
-                <a class="d-flex align-center fs-14 c-black rad-6 px-lg-5 " href="{{route('settings')}}">
-                    <i class="fa-solid fa-gear"></i>
-                    <span>Settings</span>
-                </a>
-            </li>
-            <li class="{{ request()->routeIs('reservation') ? 'active' : ''}}">
-                <a class="d-flex align-center fs-14 c-black rad-6 px-lg-5" href="{{route('reservation')}}">
-                    <i class="fa-brands fa-get-pocket"></i>
-                    <span>reservation</span>
-                </a>
-            </li>
-            <li>
-                <form action="{{ route('logout') }}" method="post">
-                    @csrf
-                    <button type="submit" class="d-flex w-100 align-center gap-2 fs-14 c-black rad-6 px-lg-5" >
-                        <i class="fa-solid fa-arrow-right-from-bracket"></i>
-                        <span>Logout</span>
-                    </button>
-                </form>
-            </li>
-        </ul>
-    </div>
-    {{$slot}}
-</div>
+<div class="sidebar bg-white p-20 p-fixed h-100-vh z-index-10">
+    <h3 class="p-relative txt-c mt-0"><span class='c-red'>A</span>IBRARY</h3>
+    <ul>
+      <li>
+        <a class="active d-flex align-center fs-14 c-black rad-6 p-10" href="index.html">
+          <i class="fa-regular fa-chart-bar fa-fw"></i>
+          <span>Dashboard</span>
+        </a>
+      </li>
+      <li>
+        <a class="d-flex align-center fs-14 c-black rad-6 p-10" href="settings.html">
+          <i class="fa-solid fa-gear fa-fw"></i>
+          <span>Settings</span>
+        </a>
+      </li>
+      <li>
+        <a class="d-flex align-center fs-14 c-black rad-6 p-10" href="profile.html">
+          <i class="fa-regular fa-user fa-fw"></i>
+          <span>Profile</span>
+        </a>
+      </li>
+      <li>
+        <a class="d-flex align-center fs-14 c-black rad-6 p-10" href="projects.html">
+          <i class="fa-solid fa-diagram-project fa-fw"></i>
+          <span>Projects</span>
+        </a>
+      </li>
+      <li>
+        <a class="d-flex align-center fs-14 c-black rad-6 p-10" href="courses.html">
+          <i class="fa-solid fa-graduation-cap fa-fw"></i>
+          <span>Courses</span>
+        </a>
+      </li>
+      <li>
+        <a class="d-flex align-center fs-14 c-black rad-6 p-10" href="friends.html">
+          <i class="fa-regular fa-circle-user fa-fw"></i>
+          <span>Friends</span>
+        </a>
+      </li>
+      <li>
+        <a class="d-flex align-center fs-14 c-black rad-6 p-10" href="files.html">
+          <i class="fa-regular fa-file fa-fw"></i>
+          <span>Files</span>
+        </a>
+      </li>
+      <li>
+        <a class="d-flex align-center fs-14 c-black rad-6 p-10" href="plans.html">
+          <i class="fa-regular fa-credit-card fa-fw"></i>
+          <span>Plans</span>
+        </a>
+      </li>
+    </ul>
+  </div>
