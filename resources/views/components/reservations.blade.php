@@ -1,5 +1,5 @@
 <div class="projects p-20 bg-white rad-10 m-20">
-    <h2 class="mt-0 mb-20">Projects</h2>
+    <h2 class="mt-0 mb-20">Today's Reservations</h2>
     <div class="responsive-table">
         <table class="fs-15 w-full">
             <thead>
