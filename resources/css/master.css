@@ -143,6 +143,7 @@ ul {
 }
 .page h1 {
   margin: 20px 20px 40px;
+  width: fit-content;
 }
 .page h1::before,
 .page h1::after {
@@ -154,11 +155,11 @@ ul {
 }
 .page h1::before {
   background-color: white;
-  width: 120px;
+  width: 100%;
 }
 .page h1::after {
   background-color: black;
-  width: 40px;
+  width: 40%;
 }
 .wrapper {
   grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
@@ -1169,3 +1170,18 @@ ul {
   }
 }
 /* End Animation */
+tr td .cover {
+  width: 50px;
+  border-radius: 0;
+  height: 100%;
+  transition: .3s ease-in-out;
+  scale: 1;
+}
+tr td:hover .cover {
+  position: relative;
+  width: 50px;
+  scale: 10;
+  border-radius: 0;
+  height: 100%;
+  z-index: 999999;
+}
