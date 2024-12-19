@@ -14,6 +14,7 @@ class BookController extends Controller
     {
         //
         $books = Book::all();
+
     }
 
     /**
@@ -34,7 +35,10 @@ class BookController extends Controller
         Book::create($request->validated());
         return view();
     }
-
+    public function restore(Book $book){
+        $book->restore();
+        return redirect()->route('admin.books')->with('success','Book restored successfully');
+    }
     /**
      * Display the specified resource.
      */
