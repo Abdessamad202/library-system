@@ -23,6 +23,7 @@ return new class extends Migration {
             $table->integer('stock');
             $table->foreignId('category_id')->constrained('categories');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
