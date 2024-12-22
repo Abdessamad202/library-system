@@ -24,7 +24,7 @@ class BookFactory extends Factory
             'edition' => $this->faker->company(),
             'image' => "storage/books/".$this->faker->numberBetween(1, 10).".jpg",
             'category_id' => $this->faker->numberBetween(1, 3),
-            'stock' => $this->faker->numberBetween(1, 10),
+            'stock' => $this->faker->numberBetween(1, 4),
             //
         ];
     }
