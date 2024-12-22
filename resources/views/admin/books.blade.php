@@ -7,9 +7,9 @@
         <h1 class="p-relative" >Books</h1>
         <x-books-list :books='$books'/>
         <x-deleted-books :deletedBooks='$deletedBooks' />
-        @session('success')
-        <x-notification message="{{ session('success') }}"/>
-        @endsession
     </div>
+    @session('success')
+    <x-notification message="{{ session('success') }}"/>
+    @endsession
     {{-- @dd($books,$deletedBooks) --}}
 @endsection
