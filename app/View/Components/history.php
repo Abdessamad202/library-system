@@ -24,12 +24,6 @@ class history extends Component
      */
     public function render(): View|Closure|string
     {
-        $reservations = Auth::user()->reservations;
-        foreach ($reservations as $reservation) {
-            $ReservationBooks = ReservationBooks::where('reservation_id', $reservation->id)->get();
-            $book = Book::find($ReservationBooks[0]->book_id);
-            $reservation->book = $book;
-        }
-        return view('components.history',compact('reservations'));
+        return view('components.history');
     }
 }
