@@ -24,14 +24,6 @@ class recent extends Component
      */
     public function render(): View|Closure|string
     {
-
-        $reservations = Auth::user()->reservations->where('state', 'pending');
-        foreach ($reservations as $reservation) {
-            $ReservationBooks = ReservationBooks::where('reservation_id', $reservation->id)->get();
-            $book = Book::find($ReservationBooks[0]->book_id);
-            $reservation->book = $book;
-            # code...
-        }
-        return view('components.recent',compact('reservations'));
+        return view('components.recent');
     }
 }
