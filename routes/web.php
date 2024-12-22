@@ -36,10 +36,12 @@ Route::get("/book/{book}", [AuthController::class, "bookView"])->name("book");
 Route::get("/category/{category}", [AuthController::class, "categoryView"])->name("category");
 Route::view("/profile", "front.profile")->name("profile");
 Route::view("/settings", "front.settings")->name("settings");
-Route::view("/reservation", "front.reservation")->name("reservation");
+// Route::view("/reservation", "front.reservation")->name("reservation");
+Route::get("/reservation", [AuthController::class, "reservationView"])->name("reservation");
 
 Route::post("/reserve", [ReservationController::class, "store"] )->name("reserve");
 Route::post("/cancel/{reservation}", [ReservationController::class, "cancel"] )->name("cancel");
+Route::post("/reserved/{reservation}", [ReservationController::class, "reserved"] )->name("reserved");
 
 Route::get('/test', [AuthController::class, "test"])->name("test");
 Route::get('/admin/dashboard', [AdminController::class,'dashboard'])->name('admin.dashboard');
