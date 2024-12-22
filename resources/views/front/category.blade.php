@@ -13,6 +13,6 @@
           <button onclick="location.href='#newBooksSlider'">Browse Categories</button>
         </div>
       </section>
-    <x-books title="Categories Books" :books="$booksRelated"/>
+    <x-books title="Related Books" :books="$booksRelated"/>
     <x-footer/>
 @endsection
