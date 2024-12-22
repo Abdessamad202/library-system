@@ -8,7 +8,7 @@
         <ul class="Nav-menu">
           <li class="Nav-item"><a href="{{ route('home') }}" class="Nav-link">Home</a></li>
           @if (request()->routeIs('category'))
-          <li class="Nav-item"><a href="#newBooksSlider" class="Nav-link">RealtedBooks</a></li>
+          <li class="Nav-item"><a href="#newBooksSlider" class="Nav-link">RelatedBooks</a></li>
           @elseif(request()->routeIs('home'))
           <li class="Nav-item"><a href="#newBooksSlider" class="Nav-link">NewBooks</a></li>
           <li class="Nav-item"><a href="#contact" class="Nav-link">Contact</a></li>
