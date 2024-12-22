@@ -9,6 +9,7 @@
                     <td>Cover</td>
                     <td>Author</td>
                     <td>Edition Date</td>
+                    <td>Stock</td>
                     <td>Operation</td>
                 </tr>
             </thead>
@@ -24,6 +25,7 @@
                             <td><img class='cover' src="{{asset($book->image)}}" alt=""></td>
                             <td>{{$book->author}}</td>
                             <td>{{$book->date_edition}}</td>
+                            <td>{{$book->stock}}</td>
                             <td class="">
                                 <div class="d-flex align-items-center gap-10 justify-content-center">
                                     <span class="label btn-shape bg-blue c-white"><i class="fas fa-eye"></i></span>
