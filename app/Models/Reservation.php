@@ -11,11 +11,16 @@ class Reservation extends Model
         "date_emprunt",
         "hour_emprunt",
         "user_id",
+        "book_id",
     ];
 
     // Define the relationship with the User model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+    public function book()
+    {
+        return $this->belongsTo(Book::class);
     }
 }
