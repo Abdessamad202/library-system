@@ -1,10 +1,11 @@
+@props(['recent'])
 <div class="  card shadow-sm w-100 h-100">
     <div class="card-header bg-primary text-white">
         <h2 class="h2">Recent Reservations</h2>
     </div>
     <div class="card-body">
         <div class="table-responsive">
-            @if ($reservations->isEmpty())
+            @if ($recent->isEmpty())
                 <p class="text-center mt-2">No reservations found.</p>
             @else
             <table class="table table-bordered table-hover text-center align-middle">
@@ -20,7 +21,7 @@
                 </thead>
                 <tbody>
                     {{-- @dd($reservations) --}}
-                    @foreach ($reservations as $reservation)
+                    @foreach ($recent as $reservation)
                         <tr>
                             <td>{{ $reservation->book->title }}</td>
                             <td>{{ $reservation->book->author }}</td>
@@ -29,7 +30,9 @@
                                     class="" style="width: 50px;" />
                             </td>
                             <td>{{ $reservation->date_emprunt }} {{ $reservation->hour_emprunt }}</td>
-                            <td>{{ $reservation->state }}</td>
+                            <td>
+                                <div class='badge {{ $reservation->state == 'pending' ? 'bg-warning' : 'bg-success' }}'>{{ $reservation->state }}</div>
+                            </td>
                             <td>
                                 <form action="{{ route('cancel', $reservation->id) }}" method="post">
                                     @csrf
