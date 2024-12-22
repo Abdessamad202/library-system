@@ -8,7 +8,19 @@
                 <h1 class="display-5 fw-bolder ">{{ $book->title }}</h1>
                 <p class="lead my-4">{{ $book->description }}</p>
                 <div class="d-flex justify-content-center justify-content-md-start">
-                    @if (!$book->search)
+                    @if ($book->reserved)
+                    <a id="reserve"
+                        class="btn btn-success flex-shrink-0" type="button">
+                        <i class="fa-solid fa-check"></i>
+                        Reserved Successfully
+                    </a>
+                    @else
+                        @if ($book->reserved_number === $book->stock)
+                            <div class="text-danger">
+                                <h1 class="h2 ">Currently Unavailable</h1>
+                                <p>We're sorry, but the book is not available at the moment.</p>
+                            </div>
+                        @else
                         <form action="" method="post">
                             <button id="reserve" data-bs-toggle="modal" data-bs-target="#exampleModal"
                                 class="btn btn-outline-dark flex-shrink-0" type="button">
@@ -16,12 +28,8 @@
                                 Reserver
                             </button>
                         </form>
-                    @else
-                        <a id="reserve"
-                            class="btn btn-success flex-shrink-0" type="button">
-                            <i class="fa-solid fa-check"></i>
-                            Reserved Successfully
-                      </a>
+
+                        @endif
                     @endif
                 </div>
             </div>
