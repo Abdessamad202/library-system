@@ -17,15 +17,9 @@ class Book extends Model
     {
         return $this->belongsTo(Category::class);
     }
-    public function books()
-    {
-        return $this->belongsToMany(Book::class, 'reservation_books')
-            ->withTimestamps(); // Adds created_at and updated_at timestamps
-    }
     // A book can belong to many reservations
     public function reservations()
     {
-        return $this->belongsToMany(Reservation::class, 'reservation_books')
-            ->withTimestamps(); // Adds created_at and updated_at timestamps
+        return $this->hasMany(Reservation::class);
     }
 }
