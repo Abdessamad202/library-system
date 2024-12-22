@@ -7,9 +7,12 @@
         <h1 class="p-relative">Dashboard</h1>
         <x-wrapper>
             <x-welcome />
-            <x-books-info />
+            <x-books-info :statistics='$booksStatistics' />
         </x-wrapper>
-        <x-regester />
-        <x-reservations />
+        <x-regester :users='$newUsers' />
+        <x-reservations :reservations='$todayReservations' />
     </div>
+    @session('success')
+    <x-notification message="{{ session('success') }}" />
+    @endsession
 @endsection
