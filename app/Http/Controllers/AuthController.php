@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\Book;
 
 use App\Models\Category;
+use App\Models\Reservation;
 use Illuminate\Http\Request;
 use App\Models\ReservationBooks;
 use App\Http\Controllers\Controller;
@@ -25,23 +26,24 @@ class AuthController extends Controller
         return view('front.settings');
     }
     public function reservationView(){
-        return view('front.reservation');
-    }
-    public function bookView(Book $book){
-        // return dd($book);
-        $book['search'] = false ;
-        $reservations= Auth::user()->reservations->where('state', 'pending');
-        foreach ($reservations as $reservation) {
-            $ReservationBooks = ReservationBooks::where('reservation_id', $reservation->id)->get();
-            $book_id = Book::find($ReservationBooks[0]->book_id)->id;
-            if($book_id == $book->id){
-                $book['search'] = true ;
-            }
+        $history = Reservation::where('user_id',Auth::user()->id)->get();
+        foreach ($history as $reservation) {
+            $reservation->book;
         }
-        $relatedBooks = $book->category->books->take(5)->toArray();
-        // $book = $book->toArray();
-        // return dd($related);
-        // return dd($book,$relatedBooks);
+        $recent = $history->where('state',"!=",'cancelled');
+        // return dd($history,$recent);
+        return view('front.reservation',compact('recent','history'));
+    }
+
+    public function bookView(Book $book){
+        if (Reservation::where([
+            ['book_id', '=', $book->id],
+            ['user_id', '=', Auth::id()],
+        ])->exists()) {
+        $book->reserved = true;
+    }
+
+        $relatedBooks = $book->category->books->take(5);
         return view('front.book',compact('relatedBooks','book'));
     }
     public function categoryView(Category $category){
@@ -54,10 +56,11 @@ class AuthController extends Controller
         return view('front.books-search' , compact('books'));
     }
     public function test(){
-        $reservations = Auth::user()->reservations();
+        $reservations = Auth::user();
         return dd($reservations);
     }
     // public function reservation(){
     //     return view('front.reservation');
     // }
+//notebook
 }
