@@ -1,10 +1,11 @@
+@props(['history'])
 <div class="card shadow-sm mt-5 w-100  h-100">
     <div class="card-header bg-primary text-white">
         <h2 class="h2">Reservations History</h2>
     </div>
     <div class="card-body">
         <div class="table-responsive">
-            @if ($reservations->isEmpty())
+            @if ($history->isEmpty())
                 <p class="text-center mt-2">No reservations found.</p>
             @else
             <table class="table table-bordered table-hover text-center align-middle">
@@ -17,7 +18,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($reservations as $reservation)
+                    @foreach ($history as $reservation)
                         <tr>
                             <td>{{$reservation->book->title}}</td>
                             <td>{{$reservation->book->author}}</td>
