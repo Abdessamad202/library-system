@@ -14,6 +14,7 @@ return new class extends Migration {
     {
         Schema::create('books', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('category_id')->constrained('categories');
             $table->string('title');
             $table->string('author');
             $table->string('edition');
@@ -21,7 +22,7 @@ return new class extends Migration {
             $table->string('image');
             $table->date('date_edition');
             $table->integer('stock');
-            $table->foreignId('category_id')->constrained('categories');
+            $table->integer('reserved_number')->default(0);
             $table->timestamps();
             $table->softDeletes();
         });
