@@ -9,13 +9,13 @@
         <div class="row  w-100 padding-100   mt-5 mb-5 ">
             <div class="py-5 px-4 d-flex justify-content-center align-items-center flex-column">
                 <!-- <h1 class="h2">Change Password</h1> -->
-                <x-recent />
-                <x-history />
+                <x-recent :recent="$recent" />
+                <x-history :history="$history"/>
             </div>
         </div>
-        @session('success')
-        <x-notification message="{{ session('success') }}" />
-        @endsession
     </x-sidebar>
     <x-footer />
+    @session('success')
+    <x-notification message="{{ session('success') }}" />
+    @endsession
 @endsection
