@@ -4,7 +4,7 @@
         position: relative;
         z-index: -1;
     }
-    .notification {
+    .notifications {
         position: fixed;
         bottom: 50px;
         z-index: 1000;
@@ -20,14 +20,14 @@
         /* height: 20px; */
     }
 
-    .notification.active {
+    .notifications.active {
         right: 50px;
     }
 </style>
-<div class="notification active  ">{{ $message }}</div>
+<div class="notifications">{{ $message }}</div>
 
 <script>
-    const notification = document.querySelector('.notification');
+    const notification = document.querySelector('.notifications');
         if (notification.innerHTML) {
             setTimeout(() => {
                 notification.classList.add('active');
