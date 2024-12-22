@@ -12,12 +12,6 @@ class ReservationBooks extends Model
         'reservation_id',
         'book_id',
     ];
-    public function reservation()
-    {
-        return $this->belongsTo(Reservation::class);
-    }
-    public function book()
-    {
-        return $this->belongsTo(Book::class);
-    }
+
+
 }
