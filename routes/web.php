@@ -45,8 +45,10 @@ Route::post("/reserved/{reservation}", [ReservationController::class, "reserved"
 
 Route::get('/test', [AuthController::class, "test"])->name("test");
 Route::get('/admin/dashboard', [AdminController::class,'dashboard'])->name('admin.dashboard');
-Route::delete('/admin/destroy/{book}',[AdminController::class,'destroy'])->name('admin.books.destroy');
 Route::get('/admin/books',[AdminController::class,'books'])->name('admin.books');
+Route::get('/admin/categories',[AdminController::class,'categories'])->name('admin.categories');
+
+Route::delete('/admin/destroy/{book}',[AdminController::class,'destroy'])->name('admin.books.destroy');
 
 // Route::get('/admin/destroy/{book}',[AdminController::class,'destroy'])->name('admin.destroy');
 Route::post('/admin/restore/{book}',[AdminController::class,'restore'])->name('admin.books.restore')->withTrashed();
