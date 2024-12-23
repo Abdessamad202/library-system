@@ -20,6 +20,12 @@
         </a>
       </li>
       <li>
+        <a class="{{ request()->routeIs('admin.categories') ? 'active' : ''}} d-flex align-center fs-14 c-black rad-6 p-10" href="{{route('admin.categories')}}">
+          <i class="fa-solid fa-diagram-project fa-fw"></i>
+          <span>Categories</span>
+        </a>
+      </li>
+      <li>
         <a class="{{ request()->routeIs('admin.books') ? 'active' : ''}} d-flex align-center fs-14 c-black rad-6 p-10" href="{{route('admin.books')}}">
           <i class="fa-solid fa-diagram-project fa-fw"></i>
           <span>Books</span>
@@ -29,24 +35,6 @@
         <a class="{{ request()->routeIs('admin/reservations') ? 'active' : ''}} d-flex align-center fs-14 c-black rad-6 p-10" href="courses.html">
           <i class="fa-solid fa-graduation-cap fa-fw"></i>
           <span>Reservations</span>
-        </a>
-      </li>
-      <li>
-        <a class="d-flex align-center fs-14 c-black rad-6 p-10" href="friends.html">
-          <i class="fa-regular fa-circle-user fa-fw"></i>
-          <span>Friends</span>
-        </a>
-      </li>
-      <li>
-        <a class="d-flex align-center fs-14 c-black rad-6 p-10" href="files.html">
-          <i class="fa-regular fa-file fa-fw"></i>
-          <span>Files</span>
-        </a>
-      </li>
-      <li>
-        <a class="d-flex align-center fs-14 c-black rad-6 p-10" href="plans.html">
-          <i class="fa-regular fa-credit-card fa-fw"></i>
-          <span>Plans</span>
         </a>
       </li>
     </ul>
