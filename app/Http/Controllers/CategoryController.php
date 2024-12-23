@@ -4,24 +4,25 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use Illuminate\Http\Request;
+use App\Http\Requests\CategoryRequest;
 
 class CategoryController extends Controller
 {
     //
-    public function index()
-    {
-        //
-        Category::all();
-    }
+    // public function index()
+    // {
+    //     //
+    //     Category::all();
+    // }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
-    {
-        //
-        return view();
-    }
+    // public function create()
+    // {
+    //     //
+    //     return view();
+    // }
 
     /**
      * Store a newly created resource in storage.
@@ -30,6 +31,7 @@ class CategoryController extends Controller
     {
         //
         Category::create($request->validated());
+        return redirect()->route('admin.categories')->with('success','Category created successfully');
     }
 
     /**
@@ -53,10 +55,11 @@ class CategoryController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Category $category)
+    public function update(CategoryRequest $request, Category $category)
     {
         //
-        $category->update();
+        $category->update($request->validated());
+        return redirect()->route('admin.categories')->with('success','Category updated successfully');
     }
 
     /**
@@ -66,6 +69,7 @@ class CategoryController extends Controller
     {
         //
         $category->delete();
+        return redirect()->route('admin.categories')->with('success','Category deleted successfully');
     }
 
 }
