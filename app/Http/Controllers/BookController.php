@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\BookRequest;
 use App\Models\Book;
 use Illuminate\Http\Request;
 
@@ -10,30 +11,29 @@ class BookController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
-    {
-        //
-        $books = Book::all();
+    // public function index()
+    // {
+    //     //
+    //     $books = Book::all();
 
-    }
+    // }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
-    {
-        //
-        return view();
-    }
+    // public function create()
+    // {
+    //     //
+    //     return view();
+    // }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(BookRequest $request)
     {
-        //
         Book::create($request->validated());
-        return view();
+        return redirect()->route('admin.books')->with('success','Book created successfully');
     }
     public function restore(Book $book){
         $book->restore();
@@ -42,29 +42,29 @@ class BookController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Book $book)
-    {
-        //
-        return view("",compact("book"));
-    }
+    // public function show(Book $book)
+    // {
+    //     //
+    //     return view("",compact("book"));
+    // }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Book $book)
-    {
-        //
-        return view();
-    }
+    // public function edit(Book $book)
+    // {
+    //     //
+    //     return view();
+    // }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Book $book)
+    public function update(BookRequest $request, Book $book)
     {
         //
         $book->update($request->validated());
-        return view();
+        return redirect()->route('admin.books')->with('success','Book updated successfully');
     }
 
     /**
@@ -74,6 +74,6 @@ class BookController extends Controller
     {
         //
         $book->delete();
-        return view();
+        return redirect()->route('admin.books')->with('success','Book deleted successfully');
     }
 }
