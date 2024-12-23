@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\book;
 use App\Models\User;
-use App\Models\Reservation;
+use App\Models\Category;
 //soft delete
+use App\Models\Reservation;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -46,6 +47,10 @@ class AdminController extends Controller
         $books = book::all();
         return view('admin.books',compact('books','deletedBooks'));
 
+    }
+    public function categories(){
+        $categories = Category::all();
+        return view('admin.categories',compact('categories'));
     }
     public function destroy(Book $book){
         $book->delete();
