@@ -1,8 +1,10 @@
 <?php
 
-use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\BookController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ReservationController;
 
 Route::get('/', function () {
@@ -45,10 +47,14 @@ Route::post("/reserved/{reservation}", [ReservationController::class, "reserved"
 
 Route::get('/test', [AuthController::class, "test"])->name("test");
 Route::get('/admin/dashboard', [AdminController::class,'dashboard'])->name('admin.dashboard');
-Route::get('/admin/books',[AdminController::class,'books'])->name('admin.books');
+// admin categories routes
 Route::get('/admin/categories',[AdminController::class,'categories'])->name('admin.categories');
-
-Route::delete('/admin/destroy/{book}',[AdminController::class,'destroy'])->name('admin.books.destroy');
-
-// Route::get('/admin/destroy/{book}',[AdminController::class,'destroy'])->name('admin.destroy');
-Route::post('/admin/restore/{book}',[AdminController::class,'restore'])->name('admin.books.restore')->withTrashed();
+Route::post('/admin/categories',[CategoryController::class,'store'])->name('admin.categories.store');
+Route::post('/admin/categories/{category}',[CategoryController::class,'update'])->name('admin.categories.update');
+Route::delete('/admin/categories/{category}',[CategoryController::class,'destroy'])->name('admin.categories.destroy');
+// admin books routes
+Route::get('/admin/books',[AdminController::class,'books'])->name('admin.books');
+Route::post('/admin/books',[BookController::class,'store'])->name('admin.books.store');
+Route::post('/admin/books/{book}',[BookController::class,'update'])->name('admin.books.update');
+Route::delete('/admin/books/{book}',[BookController::class,'destroy'])->name('admin.books.destroy');
+Route::post('/admin/restore/{book}',[BookController::class,'restore'])->name('admin.books.restore')->withTrashed();
