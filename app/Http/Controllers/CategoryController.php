@@ -27,7 +27,7 @@ class CategoryController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(CategoryRequest $request)
     {
         //
         Category::create($request->validated());
@@ -37,21 +37,9 @@ class CategoryController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Category $category)
-    {
-        //
-        return view("view",compact("category"));
-    }
-
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Category $category)
-    {
-        //
-        return view("");
-    }
-
     /**
      * Update the specified resource in storage.
      */
