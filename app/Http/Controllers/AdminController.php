@@ -52,4 +52,13 @@ class AdminController extends Controller
         $categories = Category::all();
         return view('admin.categories',compact('categories'));
     }
+    // public function reservations(){
+    //     $reservations = Reservation::where('state','pending')->get();
+    //     return view('admin.reservations',compact('reservations'));
+    // }
+    public function reservations(){
+        $reservations = Reservation::where('state','pending')->get();
+        // return dd($reservations);
+        return view('admin.reservations',compact('reservations'));
+    }
 }
