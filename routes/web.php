@@ -6,6 +6,7 @@ use App\Http\Controllers\BookController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ReservationController;
+use App\Http\Middleware\adminMiddleware;
 
 Route::get('/', function () {
     return view('welcome');
@@ -46,7 +47,7 @@ Route::post("/cancel/{reservation}", [ReservationController::class, "cancel"] )-
 Route::post("/reserved/{reservation}", [ReservationController::class, "reserved"] )->name("reserved");
 
 Route::get('/test', [AuthController::class, "test"])->name("test");
-Route::get('/admin/dashboard', [AdminController::class,'dashboard'])->name('admin.dashboard');
+Route::get('/admin/dashboard', [AdminController::class,'dashboard'])->name('admin.dashboard')->middleware("admin");
 // admin categories routes
 Route::get('/admin/categories',[AdminController::class,'categories'])->name('admin.categories');
 Route::post('/admin/categories',[CategoryController::class,'store'])->name('admin.categories.store');
@@ -58,3 +59,7 @@ Route::post('/admin/books',[BookController::class,'store'])->name('admin.books.s
 Route::post('/admin/books/{book}',[BookController::class,'update'])->name('admin.books.update');
 Route::delete('/admin/books/{book}',[BookController::class,'destroy'])->name('admin.books.destroy');
 Route::post('/admin/restore/{book}',[BookController::class,'restore'])->name('admin.books.restore')->withTrashed();
+
+// admin reservations routes
+Route::get('/admin/reservations',[AdminController::class,'reservations'])->name('admin.reservations');
+Route::get('/admin/test',[AdminController::class,'test'])->name('admin.test');
