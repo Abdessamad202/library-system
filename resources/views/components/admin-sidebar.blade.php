@@ -32,7 +32,7 @@
         </a>
       </li>
       <li>
-        <a class="{{ request()->routeIs('admin/reservations') ? 'active' : ''}} d-flex align-center fs-14 c-black rad-6 p-10" href="courses.html">
+        <a class="{{ request()->routeIs('admin/reservations') ? 'active' : ''}} d-flex align-center fs-14 c-black rad-6 p-10" href="{{route('admin.reservations')}}">
           <i class="fa-solid fa-graduation-cap fa-fw"></i>
           <span>Reservations</span>
         </a>
