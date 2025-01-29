@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('adresse', 100)->nullable();
             $table->string('password', 255);
             $table->string('role')->default("user");
-            // $table->rememberToken();
+            $table->rememberToken();
             $table->timestamps();
         });
 
