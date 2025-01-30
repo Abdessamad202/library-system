@@ -62,4 +62,5 @@ Route::post('/admin/restore/{book}',[BookController::class,'restore'])->name('ad
 
 // admin reservations routes
 Route::get('/admin/reservations',[AdminController::class,'reservations'])->name('admin.reservations');
+Route::get('/admin/profile',[AdminController::class,'profile'])->name('admin.profile');
 Route::get('/admin/test',[AdminController::class,'test'])->name('admin.test');
