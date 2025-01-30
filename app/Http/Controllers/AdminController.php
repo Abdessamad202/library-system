@@ -61,4 +61,7 @@ class AdminController extends Controller
         // return dd($reservations);
         return view('admin.reservations',compact('reservations'));
     }
+    public function profile(){
+        return view('admin.profile');
+    }
 }
