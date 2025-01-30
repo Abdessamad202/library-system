@@ -167,6 +167,19 @@ ul {
   margin-right: 20px;
   margin-bottom: 20px;
 }
+
+.logout{
+  width: 100%;
+  display: flex;
+  gap: 12.5px;
+  background: transparent;
+  border: none;
+  cursor: pointerc;
+}
+.logout:hover{
+  background: #f6f6f6;
+
+}
 @media (max-width: 767px) {
   .wrapper {
     grid-template-columns: minmax(200px, 1fr);
