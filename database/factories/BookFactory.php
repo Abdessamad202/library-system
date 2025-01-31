@@ -21,7 +21,6 @@ class BookFactory extends Factory
             'author' => $this->faker->name(),
             'description' => $this->faker->text(),
             'date_edition' => $this->faker->date(),
-            'edition' => $this->faker->company(),
             'image' => "storage/books/".$this->faker->numberBetween(1, 10).".jpg",
             'category_id' => $this->faker->numberBetween(1, 3),
             'stock' => $this->faker->numberBetween(1, 4),
