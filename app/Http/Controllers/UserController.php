@@ -47,31 +47,38 @@ class UserController extends Controller
         // Redirect the user to the login page or home page
         return redirect()->route('login'); // Change 'login' to the appropriate route name
     }
-    public function updateProfile(UpdateProfileRequest $request){
+    public function updateProfile(UpdateProfileRequest $request)
+    {
         $filables = $request->validated();
 
-        $filables["image"] = $request->file("image")->store("","public");
-        Auth::user()->update($filables);
+        $filables["image"] = $request->file("image")->store("", "public");
+        $user = Auth::user();
+        $user->update($filables);
 
-        return redirect()->route("profile")->with("success", "the profile updated successfuly");
+        return redirect()->back()->with("success", "the profile updated successfuly");
     }
-    public function updatePassword(PasswordUpdateRequest $request){
+    public function updatePassword(PasswordUpdateRequest $request)
+    {
         $filables = $request->validated();
-        if (Hash::check($filables["current_password"],Auth::user()->password)) {
+        if (Hash::check($filables["current_password"], Auth::user()->password)) {
             // return dd("true");
-            $filables["password"] = Hash::make($filables["new_password"]);
-            Auth::user()->update($filables);
-            return redirect()->route("settings")->with("success","Password updated successfully");
+            $newPassword = Hash::make($filables["new_password"]);
+            Auth::user()->update(['password' => $newPassword]);
+            return redirect()->back()->with("success", "Password updated successfully");
+        } else {
+            return redirect()->back()->with("error", "Current password is incorrect");
         }
     }
-    public function mailConfirm(){
+    public function mailConfirm()
+    {
         $user = Auth::user();
-        $token = base64_encode($user->id."///".$user->created_at);
+        $token = base64_encode($user->id . "///" . $user->created_at);
         sendMail::dispatch($token, $user);
         // return dd($token);
-        return redirect()->route("settings")->with("success","Email confirmation sent successfully , check your email");
+        return redirect()->back()->with("success", "Email confirmation sent successfully , check your email");
     }
-    public function mailVerify($token){
+    public function mailVerify($token)
+    {
         $token = base64_decode($token);
         $id = explode("///", $token)[0];
         $created_at = explode("///", $token)[1];
@@ -79,18 +86,32 @@ class UserController extends Controller
         if ($user->created_at == $created_at) {
             $user->email_verified_at = now();
             $user->save();
-            return redirect()->route("settings")->with("success","Email verified successfully");
+            return redirect()->back()->with("success", "Email verified successfully");
         }
     }
 
-    public function changeEmail(Request $request){
+    public function changeEmail(Request $request)
+    {
         $user = Auth::user();
         if (Hash::check($request->password, $user->password)) {
             $user->email = $request->email;
             $user->save();
-            return redirect()->route("settings")->with("success","Email updated successfully");
-        }else{
-            return redirect()->route("settings")->with("error","Password is incorrect");
+            return redirect()->back()->with("success", "Email updated successfully");
+        } else {
+            return redirect()->back()->with("error", "Password is incorrect");
+        }
+    }
+    public function roleChanging()
+    {
+        $user = Auth::user();
+        if ($user->role === 'admin') {
+            $user->role = 'user';
+            $user->save();
+            return redirect()->route("home")->with('success', 'Now you are in User Mode.');
+        } else {
+            $user->role = 'admin';
+            $user->save();
+            return redirect()->route('admin.dashboard')->with('success', 'Now you are in Admin Mode.');
         }
     }
 }
