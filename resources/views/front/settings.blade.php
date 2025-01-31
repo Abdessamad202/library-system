@@ -1,7 +1,7 @@
 @extends('../layout.layout')
 @section('title', 'Search')
 @section('links')
-    @vite(['resources/css/app.css', 'resources/js/app.js', 'resources/js/components/scroll.js', 'resources/css/components/profile.css'])
+    @vite(['resources/css/app.css', 'resources/css/master.css', 'resources/js/app.js', 'resources/js/components/scroll.js', 'resources/css/components/profile.css'])
 @endsection
 @section('content')
     <x-navbar />
@@ -13,7 +13,7 @@
                 </div>
                 <div class="card-body">
                     @session('success')
-                    <x-notification message="{{ session('success') }}" />
+                        <x-notification message="{{ session('success') }}" />
                     @endsession
                     <form action="{{ route('password.update') }}" method="POST">
                         @csrf
@@ -63,7 +63,7 @@
                             <div class="mt-3 text-end">
                                 <button type="submit" class="btn btn-primary">Send Confirmation Link</button>
                             </div>
-                    </form>
+                        </form>
                     @endif
                 </div>
             </div>
@@ -99,6 +99,31 @@
                     </form>
                 </div>
             </div>
+            @if (auth()->user()->isAdmin)
+                <div class="card shadow-sm mb-5 p-0">
+                    <div class="card-header bg-primary text-white">
+                        <h2 class="h2">Change Role</h2>
+                    </div>
+                    <div class="card-body">
+                        <form action="{{ route('role.change') }}" id="website-control-form" method="POST">
+                            @csrf
+                            <div class="mb-15 d-flex justify-content-between">
+                                <div>
+                                    <span class="fs-4">Admin Role</span>
+                                </div>
+                                <div>
+                                    <label>
+                                        <input class="toggle-checkbox" type="checkbox"
+                                            onchange="document.getElementById('website-control-form').submit();"
+                                            {{ auth()->user()->role === 'admin' ? 'checked' : '' }} />
+                                        <div class="toggle-switch"></div>
+                                    </label>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            @endif
         </div>
     </x-sidebar>
     <x-footer />
