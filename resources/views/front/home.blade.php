@@ -11,4 +11,7 @@
     <x-books title="New Books" :books="$books" />
     <x-location />
     <x-footer />
+    @session('success')
+    <x-notification message="{{ session('success') }}"/>
+    @endsession
 @endsection
