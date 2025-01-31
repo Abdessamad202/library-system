@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Middleware\AdminMiddleware; // Use PascalCase for class name
+use App\Http\Middleware\userMiddleware;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
@@ -15,6 +16,7 @@ return Application::configure(basePath: dirname(__DIR__))
         // Register the middleware as an alias
         $middleware->alias([
             'admin' => AdminMiddleware::class,
+            'user' => userMiddleware::class
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
