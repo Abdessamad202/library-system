@@ -10,7 +10,7 @@
         </li>
         <li>
             <a class="{{ request()->routeIs('admin.settings') ? 'active' : '' }} d-flex align-center fs-14 c-black rad-6 p-10"
-                href="">
+                href="{{route('admin.settings')}}">
                 <i class="fa-solid fa-gear fa-fw"></i>
                 <span>Settings</span>
             </a>
