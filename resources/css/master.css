@@ -1187,14 +1187,4 @@ tr td .cover {
   width: 50px;
   border-radius: 0;
   height: 100%;
-  transition: .3s ease-in-out;
-  scale: 1;
-}
-tr td:hover .cover {
-  position: relative;
-  width: 50px;
-  scale: 10;
-  border-radius: 0;
-  height: 100%;
-  z-index: 999999;
 }
