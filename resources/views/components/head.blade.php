@@ -7,7 +7,7 @@
       <span class="notification p-relative">
         <i class="fa-regular fa-bell fa-lg"></i>
       </span>
-      <img src="../imgs/avatar.png" alt="" />
+      <img src="{{Storage::url(auth()->user()->image)}}"  alt="" />
     </div>
   </div>
 <!-- End Head -->
