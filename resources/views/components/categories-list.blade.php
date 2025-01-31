@@ -62,7 +62,6 @@
         overflow: hidden;
         animation: fadeIn 0.3s ease-in-out;
     }
-
     /* Modal Header */
     .modal-header {
         display: flex;
@@ -139,7 +138,7 @@
     }
 </style>
 <div class="projects p-20 bg-white rad-10 m-20 " style="position:relative;">
-    <button type="button" style="position: absolute;right: 20px; top:10px;font-size: 16px;padding: 10px;" class="add openModalBtn" data-action='{{route("admin.categories.store")}}'>Add A Category</button>
+    <button type="button" style="position: absolute;right: 20px; top:10px;font-size: 16px;padding: 10px;" class="add button openModalBtn" data-action='{{route("admin.categories.store")}}'>Add A Category</button>
     <h2 class="mt-0 mb-20">categories List</h2>
     <div class="responsive-table">
         <table class="fs-15 w-full">
