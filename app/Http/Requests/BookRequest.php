@@ -25,9 +25,10 @@ class BookRequest extends FormRequest
             'title' => 'required',
             'author' => 'required',
             'description' => 'required',
-            'cover' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'image' => 'image',
             'category_id' => 'required',
-            'stock' => 'required',
+            'stock' => 'required|numeric',
+            'date_edition' => 'required'
             //
         ];
     }
