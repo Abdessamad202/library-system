@@ -40,14 +40,20 @@ class AdminController extends Controller
                 // return dd($todayReservations);
         return view('admin.dashboard',compact('todayReservations','booksStatistics','newUsers'));
     }
-    public function books()
-    {
-        //
-        $deletedBooks = Book::onlyTrashed()->get();
-        $books = book::all();
-        return view('admin.books',compact('books','deletedBooks'));
-
+    public function settings () {
+        return view ('admin.settings');
     }
+    public function books()
+{
+    // Fetch soft-deleted books
+    $deletedBooks = Book::onlyTrashed()->get();
+
+    // Fetch all books with their associated category (eager loading)
+    $books = Book::with('category')->get();
+    $categories = Category::all();
+    // Pass the data to the view
+    return view('admin.books', compact('books', 'deletedBooks','categories'));
+}
     public function categories(){
         $categories = Category::all();
         return view('admin.categories',compact('categories'));
