@@ -9,6 +9,7 @@ use App\Models\Category;
 use App\Models\Reservation;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
 {
@@ -42,6 +43,10 @@ class AdminController extends Controller
     }
     public function settings () {
         return view ('admin.settings');
+    }
+    public function users () {
+        $users = User::where('id','!=',Auth::user()->id)->get();
+        return view ('admin.users',compact('users'));
     }
     public function books()
 {
