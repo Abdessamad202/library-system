@@ -6,6 +6,7 @@ use App\Http\Controllers\BookController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ReservationController;
+use App\Http\Controllers\UserController;
 use App\Http\Middleware\adminMiddleware;
 
 Route::get('/', function () {
@@ -43,7 +44,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/updatePassword', [App\Http\Controllers\UserController::class, 'updatePassword'])->name('password.update');
     Route::post("/mailConfirm", [App\Http\Controllers\UserController::class, 'mailConfirm'])->name('mail.confirm');
     Route::post('/changeEmail', [App\Http\Controllers\UserController::class, 'changeEmail'])->name('email.change');
-    Route::post('/roleChanging', [App\Http\Controllers\UserController::class, 'roleChanging'])->name('role.change');
+    Route::post('/roleChanging', [App\Http\Controllers\UserController::class, 'switchRole'])->name('role.change');
 
     // Reservation routes
     Route::post("/reserve", [ReservationController::class, "store"])->name("reserve");
@@ -81,4 +82,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
 
     // Admin Settings
     Route::get('/admin/settings', [AdminController::class, 'settings'])->name('admin.settings');
+
+    Route::get('/admin/users', [AdminController::class, 'users'])->name('admin.users');
+    Route::post('/admin/users/change/{user}', [UserController::class, 'changeRole'])->name('admin.users.change');
 });
