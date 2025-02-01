@@ -23,6 +23,13 @@
             </a>
         </li>
         <li>
+            <a class="{{ request()->routeIs('admin.users') ? 'active' : '' }} d-flex align-center fs-14 c-black rad-6 p-10"
+                href="{{ route(name: 'admin.users') }}">
+                <i class="fa-solid fa-users fa-fw"></i>
+                <span>Users</span>
+            </a>
+        </li>
+        <li>
             <a class="{{ request()->routeIs('admin.categories') ? 'active' : '' }} d-flex align-center fs-14 c-black rad-6 p-10"
                 href="{{ route('admin.categories') }}">
                 <i class="fa-solid fa-diagram-project fa-fw"></i>
