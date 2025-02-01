@@ -101,7 +101,7 @@ class UserController extends Controller
             return redirect()->back()->with("error", "Password is incorrect");
         }
     }
-    public function roleChanging()
+    public function switchRole()
     {
         $user = Auth::user();
         if ($user->role === 'admin') {
@@ -113,5 +113,17 @@ class UserController extends Controller
             $user->save();
             return redirect()->route('admin.dashboard')->with('success', 'Now you are in Admin Mode.');
         }
+    }
+    public function changeRole(User $user) {
+        if ($user->role === 'user') {
+            $user->role = 'admin';
+            $user->isAdmin = true;
+        }else{
+            $user->role = 'user';
+            $user->isAdmin = false;
+        }
+        // return dd($user);
+        $user->update();
+        return redirect()->back()->with("success","the user role has been changed successfuly");
     }
 }
