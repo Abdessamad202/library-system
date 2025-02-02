@@ -1,0 +1,25 @@
+.books-slider .swiper-slide img {
+  max-width: 250px;
+  min-width: 150px;
+  height: auto;
+  border-radius: 10px;
+}
+
+.books-slider .swiper-slide {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.books-slider .swiper-slide h5 {
+  margin-top: 10px;
+}
+.books-slider{
+  overflow: hidden;
+}
+.books {
+  z-index: -1;
+  position: relative;
+
+}
