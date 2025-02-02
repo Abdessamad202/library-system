@@ -5,17 +5,14 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\guest\LoginController;
 use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\UserController;
-use App\Http\Middleware\adminMiddleware;
 
-Route::get('/', function () {
-    return view('welcome');
-});
-Route::get('/login', [App\Http\Controllers\UserController::class, "loginView"]);
-Route::post('/register', [App\Http\Controllers\UserController::class, "register"])->name("register");
-Route::post('/login', [App\Http\Controllers\API\UserController::class, "login"])->name("login");
-Route::post('/logout', [App\Http\Controllers\UserController::class, 'logout'])->name('logout');
+Route::get('/login', [LoginController::class, "loginView"]);
+Route::post('/register', [LoginController::class, "register"])->name("register");
+Route::post('/login', [LoginController::class, "login"])->name("login");
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 
 Route::get('/home', [AuthController::class, "home"])->name("home")->middleware("user");
@@ -26,7 +23,7 @@ Route::middleware('user')->group(function () {
     Route::get('/settings', [AuthController::class, 'settingsView'])->name('settings');
 
     // Email verification route
-    Route::get("/mailVerify/{token}", [App\Http\Controllers\UserController::class, 'mailVerify'])->name('mail.verify');
+    Route::get("/mailVerify/{token}", [UserController::class, 'mailVerify'])->name('mail.verify');
 
     // Reservation route
     Route::get('/reservation', [AuthController::class, 'reservationView'])->name('reservation');
@@ -40,11 +37,11 @@ Route::middleware('user')->group(function () {
 
 Route::middleware(['auth'])->group(function () {
     // Profile and email update routes
-    Route::post('/profile', [App\Http\Controllers\UserController::class, 'updateProfile'])->name('profile.update');
-    Route::post('/updatePassword', [App\Http\Controllers\UserController::class, 'updatePassword'])->name('password.update');
-    Route::post("/mailConfirm", [App\Http\Controllers\UserController::class, 'mailConfirm'])->name('mail.confirm');
-    Route::post('/changeEmail', [App\Http\Controllers\UserController::class, 'changeEmail'])->name('email.change');
-    Route::post('/roleChanging', [App\Http\Controllers\UserController::class, 'switchRole'])->name('role.change');
+    Route::post('/profile', [UserController::class, 'updateProfile'])->name('profile.update');
+    Route::post('/updatePassword', [UserController::class, 'updatePassword'])->name('password.update');
+    Route::post("/mailConfirm", [UserController::class, 'mailConfirm'])->name('mail.confirm');
+    Route::post('/changeEmail', [UserController::class, 'changeEmail'])->name('email.change');
+    Route::post('/roleChanging', [UserController::class, 'switchRole'])->name('role.change');
 
     // Reservation routes
     Route::post("/reserve", [ReservationController::class, "store"])->name("reserve");
