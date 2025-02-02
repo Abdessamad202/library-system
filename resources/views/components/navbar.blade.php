@@ -1,4 +1,4 @@
-@vite(['resources/js/components/navbar.js', 'resources/css/components/navbar.css'])
+@vite(['resources/js/user/navbar.js', 'resources/css/user/navbar.css'])
 @props(['categories'])
 <div class="Nav-bar-a">
     <div class="Nav-wrap">
