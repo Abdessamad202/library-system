@@ -1,4 +1,4 @@
-@vite(['resources/js/components/swiper.js', 'resources/css/components/hero-section.css'])
+@vite(['resources/js/user/hero.js', 'resources/css/user/hero.css'])
 
 <section class="hero-section">
     <div class="container px-5">
