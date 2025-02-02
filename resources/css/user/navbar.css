@@ -1,0 +1,261 @@
+*, ul, li {
+  font-family: "Ubuntu", sans-serif;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+  font-size: 16px;
+}
+
+ul, li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+body {
+  background-color: #f8f9fa;
+  /* height: 229vh; */
+}
+
+.Nav-bar-a {
+  position: fixed;
+  background-color: #ffffff;
+  width: 100%;
+  top: 0;
+  /* margin-top: 70px; */
+  height: 50px;
+  z-index: 100;
+  box-shadow:  0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+  .Nav-bar-a .logo {
+    font-size: 25px;
+    color: #000000;
+    font-weight: 600;
+  }
+  .Nav-bar-a .logo span {
+    color: #ff0000;
+  }
+
+.Nav-bar-a .Nav-wrap {
+  display: flex;
+  margin: auto;
+  top: 0;
+  height: 100%;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Base styles for Navigation menu */
+.Nav-bar-a .Nav-wrap .Nav-menu .Nav-item {
+  padding: 10px 20px;
+  background-color: #ffffff;
+  font-size: 16px;
+  position: relative;
+}
+
+.Nav-bar-a .Nav-wrap .Nav-menu .Nav-item .drop-down {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+}
+
+.Nav-bar-a .Nav-wrap .Nav-menu .Nav-item .drop-down i {
+  transition: transform 0.5s;
+  font-size: 14px;
+}
+
+
+.Nav-bar-a .Nav-wrap .Nav-menu .Nav-item .down-links.hover-down {
+  max-height: 300px;
+}
+
+.rotate {
+  transform: rotate(180deg);
+}
+.Nav-bar-a .Nav-wrap .Nav-menu .Nav-item .down-links {
+  box-shadow:   0 4px 8px 0 rgba(0, 0, 0, 0.116), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+}
+.Nav-bar-a .Nav-wrap .Nav-menu .Nav-item .down-links .sub-Nav-item {
+  font-size: 16px;
+  padding: 20px;
+  z-index: 1;
+}
+
+.Nav-bar-a .Nav-wrap .Nav-menu .Nav-item .sub-Nav-item:hover  {
+  background-color: gray;
+  transition: all 0.5s ease;
+}
+
+.Nav-bar-a .Nav-wrap .Nav-menu .Nav-item .sub-Nav-item:hover a {
+  color: white;
+}
+.Nav-menu {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+/* Media Query for Large Screens (screens larger than or equal to 991px) */
+@media (min-width: 991px) {
+
+.Nav-bar-a .Nav-wrap .Nav-menu .Nav-item .down-links {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  width: 120px;
+  max-height: 0;
+  z-index: 3;
+  top: 47px;
+  left: 30px;
+  transition: max-height 0.5s;
+  overflow: hidden;
+  background-color: #ffffff;
+}
+.Nav-link{
+  position: relative;
+}
+.Nav-link.sub::after{
+  background-color: white;
+}
+.Nav-link::after{
+  content:  "";
+  background-color: #000000;
+  width: 0%;
+  height: 2.5px;
+  border-radius: 10px;
+  bottom: -2.5px; left: 0;
+  position: absolute;
+  transition: 0.3s;
+}
+.Nav-link:hover::after{
+  width: 100%;
+}
+.Nav-wrap {
+    width: 1000px; /* Ensure Nav-bar width is full */
+  }.small-screen {
+    display: none;
+  }
+  .Nav-wrap .Nav-menu {
+    display: flex; /* Flex display for large screens */
+  }
+
+  .Nav-bar-a Nav.large-screen .Nav-wrap .Nav-menu .Nav-item {
+    padding: 20px;
+    font-size: 16px;
+    position: relative;
+  }
+
+  .Nav-bar-a Nav.large-screen .Nav-wrap .Nav-menu .Nav-item .drop-down {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+  }
+
+  .Nav-bar-a Nav.large-screen .Nav-wrap .Nav-menu .Nav-item .down-links {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    width: 120px;
+    max-height: 0;
+    z-index: 3;
+    top: 64px;
+    left: 30px;
+    transition: max-height 0.5s;
+    overflow: hidden;
+    background-color: #ffffff;
+  }
+
+  .Nav-bar-a Nav.large-screen .Nav-wrap .Nav-menu .Nav-item .down-links.hover-down {
+    max-height: 300px;
+  }
+  .large-screen {
+    display: block;
+  }
+}
+ul , li {
+  width: 100%;
+  text-align: start;
+}
+/* Media Query for Small Screens (screens smaller than 991px) */
+@media (max-width: 991px) {
+  .Nav-wrap {
+    padding: 0 0 0 15px;
+  }
+  .large-screen {
+    display: none;
+  }
+  .menu-icon {
+    display: block;
+    padding: 20px 15px;
+    font-size: 20px;
+    cursor: pointer;
+  }
+  .col-content {
+    text-align: center;
+  }
+  .inf li {
+    text-align: center;
+  }
+  .small-screen .Nav-menu {
+    position: absolute;
+    background-color: #ffffff;
+    top: 50px;
+    left: 0 ;
+    max-height: 0px;
+    overflow: hidden;
+    transition: max-height 0.5s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .small-screen .Nav-menu.expanded {
+    max-height: 100vh;
+  }
+  .small-screen .Nav-menu .Nav-item  {
+    width: 100%;
+    text-align: left;
+  }
+  .small-screen .Nav-menu .Nav-item .drop-down {
+    display: flex;
+    /* align-items: center; */
+    align-items: start;
+    width: 100%;
+    flex-direction: column;
+
+  }
+  .small-screen .Nav-menu .Nav-item .drop-down .drop-element {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+  .small-screen .Nav-menu .Nav-item .drop-down .down-links-small {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding-top: 15px;
+    max-height: 0px; /* Collapsed state */
+    overflow: hidden;
+    transition: max-height 0.5s ease-in-out;
+    background-color: #ffffff;
+    z-index: 3;
+  }
+  .small-screen .Nav-menu .Nav-item .drop-down .down-links-small.expanded {
+    max-height: 300px; /* Expanded state (adjust this value based on content height) */
+  }
+
+  .small-screen .Nav-menu .Nav-item .drop-down  .down-links-small .sub-Nav-item {
+    padding: 20px;
+    width: 100%;
+  }
+
+}
