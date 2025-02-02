@@ -1,4 +1,4 @@
-@vite(['resources/css/components/location.css'])
+@vite(['resources/css/user/location.css'])
 <div id="contact"></div>
 
 <section class="location py-5 mt-3 ">
