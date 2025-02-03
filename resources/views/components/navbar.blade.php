@@ -30,6 +30,7 @@
               <div class="drop-element">
                 <img src="{{ Storage::url(auth()->user()->image)}}" width="30" class="profile-picture rounded-circle" alt="profile">
               </div>
+              
             </a>
           </li>
         </ul>
