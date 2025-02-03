@@ -8,7 +8,7 @@
 @section('content')
     <x-navbar/>
     <x-heroSection />
-    <x-books title="New Books" :books="$books" />
+    <x-books-section title="New Books" :books="$books" />
     <x-location />
     <x-footer />
     @session('success')
