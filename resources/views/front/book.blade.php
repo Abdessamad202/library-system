@@ -1,11 +1,12 @@
 @extends('../layout.layout')
 @section('title', 'Search')
 @section('links')
-@vite(['resources/css/app.css', 'resources/js/app.js',"resources/js/components/scroll.js","resources/js/components/book.js"])
+    @vite(['resources/css/app.css', 'resources/js/app.js', 'resources/js/components/scroll.js', 'resources/js/user/book.js'])
 @endsection
 @section('content')
-    <x-navbar/>
-    <x-book  :book="$book"/>
-    <x-books title="Related Books" :books="$relatedBooks" />
-    <x-footer/>
+    <x-navbar />
+    <x-book :book="$book" />
+    <x-book-modal :book="$book" />
+    <x-books-section title="Related Books" :books="$relatedBooks" />
+    <x-footer />
 @endsection
