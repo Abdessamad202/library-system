@@ -20,10 +20,10 @@ class AuthController extends Controller
         return view('pages.user.home', compact('categories','books')); // Ensure 'front.home' exists
     }
     public function profileView(){
-        return view('front.profile');
+        return view('pages.user.profile');
     }
     public function settingsView(){
-        return view('front.settings');
+        return view('pages.user.settings');
     }
     public function reservationView(){
         $history = Reservation::where('user_id',Auth::user()->id)->get();
@@ -44,12 +44,12 @@ class AuthController extends Controller
     }
 
         $relatedBooks = $book->category->books->take(5);
-        return view('front.book',compact('relatedBooks','book'));
+        return view('pages.user.book',compact('relatedBooks','book'));
     }
     public function categoryView(Category $category){
         // return dd($category);
         $booksRelated = $category->books->take(5);
-        return view('front.category', compact('category','booksRelated'));
+        return view('pages.user.category', compact('category','booksRelated'));
     }
     public function booksSearchView(){
         $books = Book::all();
