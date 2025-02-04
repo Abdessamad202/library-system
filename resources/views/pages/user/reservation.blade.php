@@ -1,7 +1,7 @@
-@extends('../layout.layout')
+@extends('../layouts.user-layout')
 @section('title', 'Search')
 @section('links')
-    @vite(['resources/css/app.css', 'resources/js/app.js', 'resources/js/components/scroll.js', 'resources/css/components/profile.css'])
+    @vite(['resources/css/user/profile.css'])
 @endsection
 @section('content')
     <x-navbar />
@@ -10,12 +10,12 @@
             <div class="py-5 px-4 d-flex justify-content-center align-items-center flex-column">
                 <!-- <h1 class="h2">Change Password</h1> -->
                 <x-recent :recent="$recent" />
-                <x-history :history="$history"/>
+                <x-history :history="$history" />
             </div>
         </div>
     </x-sidebar>
     <x-footer />
     @session('success')
-    <x-notification message="{{ session('success') }}" />
+        <x-notification message="{{ session('success') }}" />
     @endsession
 @endsection
