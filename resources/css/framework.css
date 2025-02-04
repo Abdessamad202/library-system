@@ -7,6 +7,8 @@
   --green-color: #22c55e;
   --red-color: #f44336;
   --grey-color: #888;
+  --purple-color: #833ab4;
+  --teal-color: #009688;
 }
 /* Start Box */
 .d-none{
@@ -161,6 +163,12 @@
 }
 .c-red {
   color: var(--red-color);
+}
+.c-teal {
+  color: var(--teal-color);
+}
+.c-purple {
+  color: var(--purple-color);
 }
 .c-green {
   color: var(--green-color);
