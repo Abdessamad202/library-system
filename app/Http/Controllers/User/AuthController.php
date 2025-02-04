@@ -30,14 +30,19 @@ class AuthController extends Controller
     }
     public function reservationView()
     {
-        $history = Reservation::where('user_id', Auth::user()->id)->get();
-        foreach ($history as $reservation) {
-            $reservation->book;
-        }
-        $recent = $history->where('state', "!=", 'cancelled');
-        // return dd($history,$recent);
+        $userId = Auth::id(); // Retrieve the authenticated user's ID.
+
+        // Fetch all reservations for the authenticated user with their associated books.
+        $history = Reservation::with('book') // Eager load the 'book' relationship.
+            ->where('user_id', $userId)
+            ->get();
+
+        // Filter recent reservations with the 'pending' state.
+        $recent = $history->where('state', 'pending');
+
         return view('pages.user.reservation', compact('recent', 'history'));
     }
+
 
     public function bookView(Book $book)
     {
