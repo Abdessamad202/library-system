@@ -1,20 +1,20 @@
-@extends('../layout.layout')
+@extends('../layouts.user-layout')
 @section('title', 'Search')
 @section('links')
-    @vite(['resources/css/app.css', 'resources/css/master.css', 'resources/js/app.js', 'resources/js/components/scroll.js', 'resources/css/components/profile.css'])
+    @vite([ 'resources/css/user/profile.css'])
 @endsection
 @section('content')
     <x-navbar />
     <x-sidebar>
+        @session('success')
+            <x-notification message="{{ session('success') }}" />
+        @endsession
         <div class="row  w-100 padding-100   mt-5 mb-5 ">
             <div class="card shadow-sm my-5 mb-5 p-0 ">
                 <div class="card-header bg-primary text-white">
                     <h2 class="h2">Change Password</h2>
                 </div>
                 <div class="card-body">
-                    @session('success')
-                        <x-notification message="{{ session('success') }}" />
-                    @endsession
                     <form action="{{ route('password.update') }}" method="POST">
                         @csrf
                         <!-- Current Password Input -->
