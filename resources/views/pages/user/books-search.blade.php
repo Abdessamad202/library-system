@@ -1,7 +1,7 @@
-@extends('../layout.layout')
+@extends('../layouts.user-layout')
 @section('title', 'Search')
 @section('links')
-    @vite(['resources/css/app.css', 'resources/js/app.js','resources/js/components/scroll.js','resources/js/user/search.js', 'resources/css/user/search.css'])
+    @vite(['resources/js/user/search.js', 'resources/css/user/search.css'])
 @endsection
 @section('content')
     <x-navbar />
