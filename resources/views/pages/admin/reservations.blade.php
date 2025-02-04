@@ -7,6 +7,7 @@
         {{-- @dd($reservations) --}}
         <h1 class="p-relative" >Reservations</h1>
         <x-reservations :reservations='$reservations' />
+        <x-returned :reservations='$returned' />
     </div>
     @session('success')
     <x-notification message="{{ session('success') }}"/>
