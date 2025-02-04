@@ -47,6 +47,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post("/reserve", [ReservationController::class, "store"])->name("reserve");
     Route::post("/cancel/{reservation}", [ReservationController::class, "cancel"])->name("cancel");
     Route::post("/reserved/{reservation}", [ReservationController::class, "reserved"])->name("reserved");
+    Route::post("/returned/{reservation}", [ReservationController::class, "returned"])->name("returned");
 });
 
 
