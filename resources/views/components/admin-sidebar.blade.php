@@ -1,5 +1,9 @@
 <div class="sidebar bg-white p-20 p-fixed h-100-vh z-index-10">
-    <h3 class="p-relative txt-c mt-0"><span class='c-red'>A</span>IBRARY</h3>
+    <h3 class="p-relative txt-c mt-0">
+        <span class='c-red'>A</span>
+        <span class="md s-text">IBRARY</span>
+        <span class="sm"><i class="fa-solid fa-book-open"></i></span>
+    </h3>
     <ul>
         <li>
             <a class="{{ request()->routeIs('admin.dashboard') ? 'active' : '' }} d-flex align-center fs-14 c-black rad-6 p-10"
@@ -10,7 +14,7 @@
         </li>
         <li>
             <a class="{{ request()->routeIs('admin.settings') ? 'active' : '' }} d-flex align-center fs-14 c-black rad-6 p-10"
-                href="{{route('admin.settings')}}">
+                href="{{ route('admin.settings') }}">
                 <i class="fa-solid fa-gear fa-fw"></i>
                 <span>Settings</span>
             </a>
@@ -44,20 +48,20 @@
             </a>
         </li>
         <li>
-            <a class="{{ request()->routeIs('admin/reservations') ? 'active' : '' }} d-flex align-center fs-14 c-black rad-6 p-10"
+            <a class="{{ request()->routeIs('admin.reservations') ? 'active' : '' }} d-flex align-center fs-14 c-black rad-6 p-10"
                 href="{{ route('admin.reservations') }}">
                 <i class="fa-solid fa-graduation-cap fa-fw"></i>
                 <span>Reservations</span>
             </a>
         </li>
         <li>
-          <form action="{{ route('logout') }}" method="post">
-              @csrf
-              <button type="submit" class="d-flex align-center fs-14 c-black rad-6 p-10 logout">
-                  <i class="fa-solid fa-arrow-right-from-bracket"></i>
-                  <span>Logout</span>
-              </button>
-          </form>
+            <form action="{{ route('logout') }}" method="post">
+                @csrf
+                <button type="submit" class="d-flex align-center fs-14 c-black rad-6 p-10 logout">
+                    <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                    <span class="md">Logout</span>
+                </button>
+            </form>
         </li>
     </ul>
 </div>
