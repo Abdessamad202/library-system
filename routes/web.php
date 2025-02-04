@@ -1,13 +1,13 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AuthController;
-use App\Http\Controllers\BookController;
-use App\Http\Controllers\AdminController;
-use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\guest\LoginController;
-use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\User\AuthController;
+use App\Http\Controllers\Admin\BookController;
+use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Guest\LoginController;
+use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\ReservationController;
 
 Route::get('/login', [LoginController::class, "loginView"]);
 Route::post('/register', [LoginController::class, "register"])->name("register");
