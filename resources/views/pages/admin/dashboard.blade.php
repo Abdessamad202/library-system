@@ -14,8 +14,10 @@
         </x-wrapper>
         <x-regester :users='$newUsers' />
         <x-reservations :reservations='$todayReservations' />
+        <x-returned :reservations='$todayReturns' />
     </div>
     @session('success')
     <x-notification message="{{ session('success') }}" />
     @endsession
 @endsection
+{{-- @dd($todayReturns) --}}
