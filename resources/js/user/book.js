@@ -73,7 +73,7 @@ reservBtn.addEventListener("click", (e) => {
             if (data.success) {
                 showAlert("success", data.message);
                 setTimeout(() => {
-                    window.location.reload(); // Optionally reload or redirect
+                    window.location = '/reservation';
                 }, 500);
             } else {
                 console.log(data);
