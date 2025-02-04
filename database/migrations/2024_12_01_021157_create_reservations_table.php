@@ -18,6 +18,8 @@ return new class extends Migration {
             $table->foreignId('book_id')->constrained('books');
             $table->date('date_emprunt');
             $table->time('hour_emprunt');
+            $table->time('hour_retour')->nullable();
+            $table->date('date_retour')->nullable(); // Allow it to be null for dynamic calculation
             $table->string('state')->default('pending');
             $table->timestamps();
         });
