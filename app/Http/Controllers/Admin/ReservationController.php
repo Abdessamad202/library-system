@@ -33,8 +33,18 @@ class ReservationController extends Controller
     }
     public function reserved(Reservation $reservation){
         $reservation->state = "reserved";
+        $reservation->date_retour = now()->addDays(7)->toDateString();
+        $reservation->hour_retour = now()->addDays(7)->toTimeString();
         $reservation->save();
         return redirect()->route("admin.dashboard")->with("success","Reservation reserved successfully");
+    }
+    public function returned (Reservation $reservation){
+        $reservation->state = "returned";
+        $reservation->save();
+        $book =Book::find($reservation->book_id);
+        $book->reserved_number -= 1;
+        $book->save();
+        return redirect()->route("admin.dashboard")->with("success","Reservation returned successfully");
     }
     /**
      * Display the specified resource.
