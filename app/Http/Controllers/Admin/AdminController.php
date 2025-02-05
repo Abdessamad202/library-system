@@ -39,14 +39,18 @@ class AdminController extends Controller
         $availableBooks = Book::sum('stock') - Book::sum('reserved_number'); // Count books with stock greater than 0
         $pendingReservations = Reservation::where('state', 'pending')->count();
         $cancelledReservations = Reservation::where('state', 'cancelled')->count();
+        $expiredReservations = Reservation::where('state', 'expired')->count();
         $reservedReservations = Reservation::where('state', 'reserved')->count();
         $returnedReservations = Reservation::where('state', 'returned')->count();
+        $notReturnedReservations = Reservation::where('state', 'not returned')->count();
         $booksStatistics = [
             'all' => $allBooks,
             'available' => $availableBooks,
             'pending' => $pendingReservations,
             'cancelled' => $cancelledReservations,
+            'expired' => $expiredReservations,
             'reserved' => $reservedReservations,
+            'not_returned' => $notReturnedReservations,
             'returned' => $returnedReservations,
         ];
 
