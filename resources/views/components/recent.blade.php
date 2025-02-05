@@ -1,7 +1,7 @@
-@props(['recent'])
-<div class="  card shadow-sm w-100 h-100">
+@props(['recent','title'])
+<div class="  card shadow-sm mb-5 w-100 h-100">
     <div class="card-header bg-primary text-white">
-        <h2 class="h2">Recent Reservations</h2>
+        <h2 class="h2">{{ $title }}</h2>
     </div>
     <div class="card-body">
         <div class="table-responsive">
