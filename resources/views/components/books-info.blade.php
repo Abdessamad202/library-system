@@ -3,12 +3,12 @@
 <div class="tickets p-20 bg-white rad-10">
     <h2 class="mt-0 mb-10">Books Statistics</h2>
     <p class="mt-0 mb-20 c-grey fs-15">Everything About Support Books</p>
-    <div class="d-flex txt-c gap-20 f-wrap">
+    <div class="d-flex txt-c gap-5 f-wrap">
         <!-- Total Books -->
         <div class="box p-20 rad-10 fs-13 c-grey">
             <i class="fa-solid fa-book fa-2x mb-10 c-orange"></i>
             <span class="d-block c-black fw-bold fs-25 mb-5 count">{{ $statistics['all'] }}</span>
-            Total Books
+            Total
         </div>
 
         <!-- Available Books -->
@@ -22,7 +22,7 @@
         <div class="box p-20 rad-10 fs-13 c-grey">
             <i class="fa-solid fa-hourglass-half fa-2x mb-10 c-blue"></i>
             <span class="d-block c-black fw-bold fs-25 mb-5 count">{{ $statistics['pending'] }}</span>
-            Pending Reservations
+            Pending
         </div>
 
         <!-- Reserved Books -->
@@ -44,6 +44,20 @@
             <i class="fa-solid fa-times-circle fa-2x mb-10 c-red"></i>
             <span class="d-block c-black fw-bold fs-25 mb-5 count">{{ $statistics['cancelled'] }}</span>
             Cancelled
+        </div>
+
+        <!-- Expired Reservations -->
+        <div class="box p-20 rad-10 fs-13 c-grey">
+            <i class="fa-solid fa-calendar-times fa-2x mb-10 c-red-orange"></i>
+            <span class="d-block c-black fw-bold fs-25 mb-5 count">{{ $statistics['expired'] }}</span>
+            Expired
+        </div>
+
+        <!-- Not Returned Books -->
+        <div class="box p-20 rad-10 fs-13 c-grey">
+            <i class="fa-solid fa-exclamation-circle fa-2x mb-10 c-yellow"></i>
+            <span class="d-block c-black fw-bold fs-25 mb-5 count">{{ $statistics['not_returned'] }}</span>
+            Unreturned
         </div>
     </div>
 </div>
