@@ -9,7 +9,10 @@
   --grey-color: #888;
   --purple-color: #833ab4;
   --teal-color: #009688;
+  --red-orange-color: #FF6F00;
+  --yellow-color: #FFEB3B;
 }
+
 /* Start Box */
 .d-none{
   display: none;
@@ -40,6 +43,9 @@
 }
 .d-grid {
   display: grid;
+}
+.gap-5 {
+  gap: 5px;
 }
 .gap-10 {
   gap: 10px;
@@ -179,6 +185,14 @@
 .c-orange {
   color: var(--orange-color);
 }
+.c-red-orange {
+  color: var(--red-orange-color); /* Red-Orange color */
+}
+
+.c-yellow {
+  color: var(--yellow-color); /* Yellow color */
+}
+
 .bg-red {
   background-color: var(--red-color);
 }
