@@ -39,8 +39,9 @@ class AuthController extends Controller
 
         // Filter recent reservations with the 'pending' state.
         $recent = $history->where('state', 'pending');
+        $reserved = $history->where('state', 'reserved');
 
-        return view('pages.user.reservation', compact('recent', 'history'));
+        return view('pages.user.reservation', compact('recent', 'history', 'reserved'));
     }
 
 
@@ -58,8 +59,10 @@ class AuthController extends Controller
             ->where('id', '!=', $book->id)
             ->take(5)
             ->get();
-
-        return view('pages.user.book', compact('relatedBooks', 'book'));
+        $userReservations = Reservation::where('user_id', Auth::id())
+            ->whereIn('state', ['reserved', 'pending'])
+            ->count();
+        return view('pages.user.book', compact('relatedBooks', 'book','userReservations'));
     }
 
     public function categoryView(Category $category)
