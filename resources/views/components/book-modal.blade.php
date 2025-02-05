@@ -9,7 +9,7 @@
             <div class="modal-body">
                 <form>
                     <div class="mb-3">
-                        <label for="recipient-name" class="col-form-label">Select Date: {{$id}}</label>
+                        <label for="recipient-name" class="col-form-label">Select Date:</label>
                         <input type="date" id="date_emprunt" class="form-control" id="recipient-name">
                     </div>
                     <div class="mb-3">
