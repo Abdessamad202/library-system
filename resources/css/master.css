@@ -328,7 +328,7 @@ ul {
 /* Start Tickets */
 .tickets .box {
   border: 1px solid #ccc;
-  width: calc(100% / 3 - 20px);
+  width: calc(100% / 4 - 5px);
 }
 @media (max-width: 767px) {
   .tickets .box {
