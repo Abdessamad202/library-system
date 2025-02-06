@@ -21,6 +21,7 @@ return new class extends Migration {
             $table->string('image');
             $table->date('date_edition');
             $table->integer('stock');
+            $table->boolean('is_commentable')->default(true);
             $table->integer('reserved_number')->default(0);
             $table->timestamps();
             $table->softDeletes();
