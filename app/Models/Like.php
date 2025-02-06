@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 //soft delete
 use Illuminate\Database\Eloquent\SoftDeletes;
+
 class Like extends Model
 {
     //
