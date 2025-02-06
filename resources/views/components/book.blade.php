@@ -10,10 +10,14 @@
                 <p class="lead my-4">{{ $book->description }}</p>
                 <div class="d-flex justify-content-center justify-content-md-start">
                     @if ($book->reserved)
-                        <a id="reserve" class="btn btn-success flex-shrink-0" type="button">
-                            <i class="fa-solid fa-check"></i>
-                            Reserved Successfully
-                        </a>
+                        <div class="alert alert-success text-center w-100" role="alert">
+                            <h4 class="alert-heading fw-bold">Reserved Successfully</h4>
+                            <p class="mb-0">You have successfully reserved this book. You can now check your reservations in the "My Reservations" section.</p>
+                            <a id="comment" href="{{ route('reservation') }}" class="btn btn-primary mt-1" type="button">
+                                <i class="fa-solid fa-circle-plus"></i>
+                                Check Reservations
+                            </a>
+                        </div>
                     @else
                         @if ($book->reserved_number === $book->stock)
                             <div class="alert alert-danger text-center w-100" role="alert">
