@@ -64,7 +64,9 @@ class AuthController extends Controller
             ->whereIn('state', ['reserved', 'pending'])
             ->count();
         $comments = Comment::where('book_id', $book->id)->with('user')->get();
-        return view('pages.user.book', compact('relatedBooks', 'book','userReservations','comments'));
+        $likes['count'] = $book->likes()->count();
+        $likes['is_liked'] = $book->likes()->where('user_id', Auth::id())->exists();
+        return view('pages.user.book', compact('relatedBooks', 'book','userReservations','comments','likes'));
     }
 
     public function categoryView(Category $category)
