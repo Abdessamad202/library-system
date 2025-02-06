@@ -26,5 +26,10 @@ class Book extends Model
     public function comments()
     {
         return $this->hasMany(Comment::class);
+    }   
+    // A book can have many likes
+    public function likes()
+    {
+        return $this->hasMany(Like::class);
     }
 }
