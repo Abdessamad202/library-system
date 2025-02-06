@@ -9,11 +9,8 @@
                 <tr>
                     <td>Title</td>
                     <td>Cover</td>
-                    <td>Description</td>
                     <td>Author</td>
                     <td>Category</td>
-                    <td>Edition Date</td>
-                    <td>Stock</td>
                     <td>Reserved By</td>
                     <td>Operation</td>
                 </tr>
@@ -28,11 +25,8 @@
                         <tr>
                             <td>{{ $book->title }}</td>
                             <td><img class='cover' src="{{ asset($book->image) }}" alt=""></td>
-                            <td>{{ Str::limit($book->description, 40) }}</td>
                             <td>{{ $book->author }}</td>
                             <td>{{ $book->category->name }}</td>
-                            <td>{{ $book->date_edition }}</td>
-                            <td>{{ $book->stock }}</td>
                             <td>{{ $book->reserved_number }}</td>
                             <td >
                                 <div class="d-flex align-items-center gap-10 justify-content-center">
@@ -42,6 +36,7 @@
                                         data-description="{{ $book->description }}"
                                         data-date-edition="{{ $book->date_edition }}" data-stock="{{ $book->stock }}"
                                         data-category-id="{{ $book->category_id }}"
+                                        data-is-commentable="{{ $book->is_commentable }}"
                                         data-action="{{ route('admin.books.update', $book->id) }}">
                                         <i class="fas fa-eye"></i>
                                     </span>
@@ -61,13 +56,22 @@
             </tbody>
 
         </table>
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
     </div>
 </div>
 <div id="modal" class="modal">
     <div class="modal-content">
         <!-- Modal Header -->
         <div class="modal-header">
-            <h2>Modify Book</h2>
+            <h2 class="title"></h2>
             <span id="closeModalBtn" class="close">&times;</span>
         </div>
         <!-- Modal Body -->
@@ -82,7 +86,7 @@
                 </div>
 
                 <!-- Cover Field -->
-                <div class="mix d-flex">
+                <div class="mix d-flex justify-content-between">
                     <div class="form-group">
                         <label for="BookCover">Cover</label>
                         <input type="file" id="BookCover" name="image">
@@ -92,9 +96,16 @@
                         <select id="CategorySelect" name="category_id" class="input" required>
                             <option value="">-- Select a category --</option>
                             @foreach($categories as $category)
-                                <option value="{{ $category->id }}">{{ $category->name }}</option>
+                            <option value="{{ $category->id }}">{{ $category->name }}</option>
                             @endforeach
                         </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="isCommentable">Commentable</label>
+                        <label>
+                            <input class="toggle-checkbox" id="isCommentable" type="checkbox" name="is_commentable" value="1" onchange="this.value = this.checked ;" />
+                            <div class="toggle-switch"></div>
+                        </label>
                     </div>
                 </div>
                 <!-- Stock Field -->
