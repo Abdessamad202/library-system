@@ -11,7 +11,7 @@ class Book extends Model
     //
     use HasFactory;
     use SoftDeletes;
-    protected $fillable = ['title', 'author', 'description', 'category_id', 'image', 'date_edition', 'edition', 'stock'];
+    protected $fillable = ['title', 'author', 'description', 'category_id', 'image', 'date_edition', 'edition', 'stock', 'is_commentable'];
 
     public function category()
     {
@@ -21,5 +21,10 @@ class Book extends Model
     public function reservations()
     {
         return $this->hasMany(Reservation::class);
+    }
+    // A book can have many comments
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
     }
 }
