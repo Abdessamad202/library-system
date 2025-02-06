@@ -25,11 +25,11 @@ class LikeController extends Controller
             if ($like->trashed()) {
                 // If it exists but is soft-deleted, restore it
                 $like->restore();
-                return response()->json(['success'=>true,'count'=>Like::where('book_id', $bookId)->count(),'is_liked'=>true]);
+                return response()->json(['success' => true, 'count' => Like::where('book_id', $bookId)->count(), 'is_liked' => true]);
             } else {
                 // If it exists and is active, delete it
                 $like->delete();
-                return response()->json(['success'=>true,'count'=>Like::where('book_id', $bookId)->count(),'is_liked'=>false]);
+                return response()->json(['success' => true, 'count' => Like::where('book_id', $bookId)->count(), 'is_liked' => false]);
             }
         } else {
             // If it doesn't exist, create a new like
@@ -47,6 +47,6 @@ class LikeController extends Controller
             'book_id' => $bookId,
         ]);
 
-        return response()->json(['success'=>true,'count'=>Like::where('book_id', $bookId)->count(),'is_liked'=>true]);
+        return response()->json(['success' => true, 'count' => Like::where('book_id', $bookId)->count(), 'is_liked' => true]);
     }
 }
