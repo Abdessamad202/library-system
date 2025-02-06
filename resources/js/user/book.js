@@ -98,3 +98,23 @@ function showAlert(state, message) {
         timer: state === 'success' ? 2000 : undefined
     });
 }
+
+const editCommentModal = document.getElementById('editCommentModal')
+    if (editCommentModal) {
+        editCommentModal.addEventListener('show.bs.modal', event => {
+            // Button that triggered the modal
+            const button = event.relatedTarget
+            // Extract info from data-bs-* attributes
+            const comment = button.getAttribute('data-comment')
+            const action = button.getAttribute('data-action')
+            // If necessary, you could initiate an Ajax request here
+            // and then do the updating in a callback.
+
+            // Update the modal's content.
+            const modalTitle = editCommentModal.querySelector('.modal-title')
+            const modalBodyInput = editCommentModal.querySelector('.modal-body textarea')
+            const form = editCommentModal.querySelector('form')
+            form.action = action
+            modalBodyInput.value = comment
+        })
+    }
