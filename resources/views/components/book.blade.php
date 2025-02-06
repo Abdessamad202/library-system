@@ -3,7 +3,8 @@
     <div class="container px-4 px-lg-5 my-5 text-md-start text-center">
         <div class="row gx-4 gx-lg-5 align-items-center justify-content-lg-center justify-content-md-between g-4">
             <div class="col-md-5 d-flex justify-content-center book-cover">
-                <button class='like-btn {{ $likes['is_liked'] ? 'liked' : ''}}' title="{{ $likes['is_liked'] ? 'Unlike' : 'Like'}}" data-book-id="{{ $book->id }}">
+                <button class='like-btn {{ $likes['is_liked'] ? 'liked' : '' }}'
+                    title="{{ $likes['is_liked'] ? 'Unlike' : 'Like' }}" data-book-id="{{ $book->id }}">
                     <i class="fa-solid fa-heart "></i>
                     <span class="like-count">{{ $likes['count'] }}</span>
                 </button>
