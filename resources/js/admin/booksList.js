@@ -20,7 +20,12 @@ openModalBtns.forEach((btn) => {
 
         // Populate form fields if the button has the "update" class
         if (btn.classList.contains("update")) {
+            modal.querySelector('.title').textContent = "Modify Book";
             modal.querySelector('#BookTitle').value = btn.getAttribute('data-title');
+            modal.querySelector('#isCommentable').checked = btn.getAttribute('data-is-commentable') === '1';
+            modal.querySelector('#isCommentable').value = btn.getAttribute('data-is-commentable');
+            // Set checkbox state
+
             modal.querySelector('#BookAuthor').value = btn.getAttribute('data-author');
             modal.querySelector('#BookDescription').value = btn.getAttribute('data-description');
             modal.querySelector('#BookDate').value = btn.getAttribute('data-date-edition');
@@ -37,10 +42,11 @@ openModalBtns.forEach((btn) => {
             // Update the form action
             modal.querySelector('form').setAttribute('action', btn.getAttribute('data-action'));
         } else {
+            modal.querySelector('.title').textContent = "Add Book";
             // Reset form fields for a new book
             modal.querySelector('#BookTitle').value = "";
             modal.querySelector('#BookAuthor').value = "";
-            modal.querySelector('#BookDescription').value = "";
+            modal.querySelector('#isCommentable').checked = true; // Reset checkbox state
             modal.querySelector('#BookDate').value = "";
             modal.querySelector('#BookStock').value = "";
             modal.querySelector('#BookCover').value = "";
