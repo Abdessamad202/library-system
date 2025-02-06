@@ -13,7 +13,7 @@ dateInput.setAttribute("max", maxDate.toISOString().split('T')[0]);
 dateInput.onchange = (e) => {
     if (e.target.value >= e.target.getAttribute("max")) {
         e.target.value = e.target.getAttribute("max");
-    }else if (e.target.value <= e.target.getAttribute("min")) {
+    } else if (e.target.value <= e.target.getAttribute("min")) {
         e.target.value = e.target.getAttribute("min");
     }
 }
@@ -22,7 +22,7 @@ dateInput.onchange = (e) => {
 // ==========================================================================
 const timeSelect = document.getElementById("hour_emprunt");
 for (let i = 8; i < 18; i++) {
-    for (let j = 0; j <=30; j=j+30) {
+    for (let j = 0; j <= 30; j = j + 30) {
         const option = document.createElement("option");
         option.value = `${i < 10 ? `0${i}` : i}:${j == 0 ? `00` : j}`;
         option.textContent = `${i < 10 ? `0${i}` : i}:${j == 0 ? `00` : j}`;
@@ -100,21 +100,54 @@ function showAlert(state, message) {
 }
 
 const editCommentModal = document.getElementById('editCommentModal')
-    if (editCommentModal) {
-        editCommentModal.addEventListener('show.bs.modal', event => {
-            // Button that triggered the modal
-            const button = event.relatedTarget
-            // Extract info from data-bs-* attributes
-            const comment = button.getAttribute('data-comment')
-            const action = button.getAttribute('data-action')
-            // If necessary, you could initiate an Ajax request here
-            // and then do the updating in a callback.
+if (editCommentModal) {
+    editCommentModal.addEventListener('show.bs.modal', event => {
+        // Button that triggered the modal
+        const button = event.relatedTarget
+        // Extract info from data-bs-* attributes
+        const comment = button.getAttribute('data-comment')
+        const action = button.getAttribute('data-action')
+        // If necessary, you could initiate an Ajax request here
+        // and then do the updating in a callback.
 
-            // Update the modal's content.
-            const modalTitle = editCommentModal.querySelector('.modal-title')
-            const modalBodyInput = editCommentModal.querySelector('.modal-body textarea')
-            const form = editCommentModal.querySelector('form')
-            form.action = action
-            modalBodyInput.value = comment
+        // Update the modal's content.
+        const modalTitle = editCommentModal.querySelector('.modal-title')
+        const modalBodyInput = editCommentModal.querySelector('.modal-body textarea')
+        const form = editCommentModal.querySelector('form')
+        form.action = action
+        modalBodyInput.value = comment
+    })
+}
+let likeBtn = document.querySelector(".like-btn");
+
+likeBtn.addEventListener("click", (e) => {
+    // Get the book ID and CSRF token
+    let bookId = e.target.getAttribute("data-book-id");
+    let csrfToken = document.querySelector("meta[name='csrf-token']").content;
+
+    // Send an AJAX POST request to toggle the like
+    axios.post(`/like/${bookId}`, {}, {
+        headers: {
+            'X-CSRF-TOKEN': csrfToken
+        }
+    })
+        .then(response => {
+            const data = response.data;
+
+            if (data.success) {
+                // Update the like count
+                likeBtn.querySelector(".like-count").textContent = data.count;
+
+                // Toggle the "liked" class to change the button's appearance
+                likeBtn.classList.toggle("liked");
+
+                // Update the title attribute to reflect the current state
+                likeBtn.setAttribute("title", data.is_liked ? "Unlike" : "Like");
+            } else {
+                console.log("Error:", data.message);
+            }
         })
-    }
+        .catch(error => {
+            console.error("Error:", error);
+        });
+});
