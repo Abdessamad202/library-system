@@ -38,3 +38,38 @@ textarea {
 textarea:focus {
   border: 1px solid #000 !important;
 }
+.book-cover{
+  position: relative;
+}
+.like-btn {
+  font-size: 10px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-right: 5px;
+  transition: all 0.3s ease;
+  position: absolute;
+  bottom: -20px;
+  background-color: #000000;
+  right: 45px;
+  color: #fff;
+  z-index: 1;
+}
+.like-btn i {
+  font-size: 20px;
+  transition: all 0.3s ease;
+  color: #fff;
+}
+.like-btn:hover i{
+  color: #f44336;
+}
+.like-btn.liked i{
+  color: #f44336;
+}
+.like-btn.liked:hover i{
+  color: #fff;
+}
