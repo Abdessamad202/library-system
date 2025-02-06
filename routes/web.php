@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Guest\LoginController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ReservationController;
+use App\Http\Controllers\User\LikeController;
 
 Route::get('/login', [LoginController::class, "loginView"]);
 Route::post('/register', [LoginController::class, "register"])->name("register");
@@ -54,6 +55,8 @@ Route::middleware(['auth'])->group(function () {
     Route::post("/addComment/{book}", [CommentsController::class, "store"])->name("comments.store");
     Route::put("/updateComment/{comment}", [CommentsController::class, "update"])->name("comments.update");
     Route::delete("/deleteComment/{comment}", [CommentsController::class, "destroy"])->name("comments.destroy");
+
+    Route::post("/like/{bookId}", [LikeController::class, "toggleLike"])->name("like.toggle");
 });
 
 
