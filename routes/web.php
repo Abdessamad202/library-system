@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\User\AuthController;
+use App\Http\Controllers\User\CommentsController;
 use App\Http\Controllers\Admin\BookController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Guest\LoginController;
@@ -48,6 +49,11 @@ Route::middleware(['auth'])->group(function () {
     Route::post("/cancel/{reservation}", [ReservationController::class, "cancel"])->name("cancel");
     Route::post("/reserved/{reservation}", [ReservationController::class, "reserved"])->name("reserved");
     Route::post("/returned/{reservation}", [ReservationController::class, "returned"])->name("returned");
+    // delete comment
+
+    Route::post("/addComment/{book}", [CommentsController::class, "store"])->name("comments.store");
+    Route::put("/updateComment/{comment}", [CommentsController::class, "update"])->name("comments.update");
+    Route::delete("/deleteComment/{comment}", [CommentsController::class, "destroy"])->name("comments.destroy");
 });
 
 
