@@ -28,7 +28,7 @@ class BookRequest extends FormRequest
             'image' => 'image',
             'category_id' => 'required',
             'stock' => 'required|numeric',
-            'date_edition' => 'required'
+            'date_edition' => 'required',
             //
         ];
     }
