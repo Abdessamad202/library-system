@@ -5,7 +5,7 @@
 @endsection
 @section('content')
     <x-navbar />
-    <x-book :book="$book" :userReservations="$userReservations" />
+    <x-book :book="$book" :userReservations="$userReservations" :likes="$likes" />
     @if($book->is_commentable)
         <x-comments :comments="$comments" :book="$book" />
     @endif
