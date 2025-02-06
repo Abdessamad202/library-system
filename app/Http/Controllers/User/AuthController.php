@@ -6,6 +6,7 @@ use App\Models\Book;
 
 use App\Models\Category;
 use App\Models\Reservation;
+use App\Models\Comment;
 use Illuminate\Http\Request;
 use App\Models\ReservationBooks;
 use App\Http\Controllers\Controller;
@@ -62,7 +63,8 @@ class AuthController extends Controller
         $userReservations = Reservation::where('user_id', Auth::id())
             ->whereIn('state', ['reserved', 'pending'])
             ->count();
-        return view('pages.user.book', compact('relatedBooks', 'book','userReservations'));
+        $comments = Comment::where('book_id', $book->id)->with('user')->get();
+        return view('pages.user.book', compact('relatedBooks', 'book','userReservations','comments'));
     }
 
     public function categoryView(Category $category)
