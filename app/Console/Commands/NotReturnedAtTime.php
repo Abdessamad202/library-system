@@ -30,10 +30,10 @@ class NotReturnedAtTime extends Command
     {
         $reservations = Reservation::where('state', 'reserved')
             ->where(function ($query) {
-                $query->where('date_emprunt', '<', today())
+                $query->where('date_retour', '<', today())
                     ->orWhere(function ($subQuery) {
-                        $subQuery->where('date_emprunt', today())
-                            ->where('hour_emprunt', '<', now()->format('H:i:s'));
+                        $subQuery->where('date_retour', today())
+                            ->where('hour_retour', '<', now()->format('H:i:s'));
                     });
             })
             ->with(['user', 'book'])->get();
