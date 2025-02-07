@@ -17,18 +17,20 @@ The Library System is a comprehensive application designed to manage library ope
 3. **User Data Management**:
    - Update profile information.
    - Change passwords.
+   - Change Email.
 
 4. **Book Search**:
    - Search for books by title, author, or category.
-   - Filter and sort results.
+   <!-- - Filter and sort results. -->
 
 5. **Comments and Likes**:
-   - Users can leave comments on books.
+   - Users can leave comments on books ,edit it and also delete it .
    - Users can like books to show appreciation.
 
 ### Admin Features
 1. **Role Management**:
    - Promote users to administrators.
+   - switch role himself without losing permissions
    - Manage user roles and permissions.
 
 2. **Reservation Management**:
@@ -45,10 +47,10 @@ The Library System is a comprehensive application designed to manage library ope
 
 ## Technology Stack
 - **Backend**: Laravel Framework
-- **Frontend**: Blade templates (with optional integration for JavaScript frameworks like Vue.js or React.js)
+- **Frontend**: Blade templates
 - **Database**: MySQL
-- **Styling**: Tailwind CSS
-- **Email Services**: Laravel Mail (integrated with SMTP services like Mailgun or SendGrid)
+- **Styling**: Tailwind CSS,Bootstrap , Vanila CSS.
+- **Email Services**: Laravel Mail (integrated with SMTP services)
 
 ## Installation and Setup
 
@@ -56,12 +58,12 @@ The Library System is a comprehensive application designed to manage library ope
 - PHP >= 8.0
 - Composer
 - MySQL
-- Node.js and npm (optional for frontend assets)
+- Node.js and npm
 
 ### Steps
 1. Clone the repository:
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/Abdessamad202/laravel-project.git
    ```
 
 2. Navigate to the project directory:
@@ -75,23 +77,17 @@ The Library System is a comprehensive application designed to manage library ope
    npm install && npm run dev
    ```
 
-4. Configure the environment file:
-   ```bash
-   cp .env.example .env
-   ```
-   Update the `.env` file with your database and email service credentials.
-
-5. Run migrations and seed the database:
+4. Run migrations and seed the database:
    ```bash
    php artisan migrate --seed
    ```
 
-6. Start the development server:
+5. Start the development server:
    ```bash
    php artisan serve
    ```
 
-7. Access the application at `http://localhost:8000`.
+6. Access the application at `http://localhost:8000`.
 
 ## Usage
 
