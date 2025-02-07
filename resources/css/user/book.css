@@ -75,3 +75,8 @@ textarea:focus {
 .like-btn.liked:hover i {
     color: #fff;
 }
+@media (max-width: 500px) {
+    .comment-time {
+        display: none;
+    }
+}
