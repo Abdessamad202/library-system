@@ -1,6 +1,11 @@
 <!-- Start Head -->
 <div class="head bg-white p-15 between-flex">
-    <div class="search p-relative">
+
+  <i class="fa-solid fa-bars "></i>
+    <div class="search p-relative d-flex align-center">
+      {{-- menu --}}
+      <div class="toggle-menu p-relative">
+      </div>
       <input class="p-10" type="search" placeholder="Type A Keyword" />
     </div>
     <div class="icons d-flex align-center">
