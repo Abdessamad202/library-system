@@ -1,5 +1,5 @@
 @props(['comments', 'book'])
-<div class="container">
+<div class="container-fluid container-lg">
     <div class="card mb-4">
         <div class="card-header bg-primary text-white">
             <h2 class="mb-0">Comments</h2>
@@ -53,7 +53,7 @@
                                 <div class="d-flex justify-content-between">
                                     <!-- Comment Time -->
                                     <p class="mb-0">{{ $comment->comment }}</p>
-                                    <small class="text-muted">{{ $comment->created_at->diffForHumans() }}
+                                    <small class="text-muted comment-time">{{ $comment->created_at->diffForHumans() }}
                                         {{ $comment->updated_at != $comment->created_at ? ' (edited)' : '' }}</small>
                                 </div>
                             </div>
